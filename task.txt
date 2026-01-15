@@ -1,0 +1,44 @@
+Task: UX/UI Improvements for Vini2026
+Objective
+Completely improve the UX/UI experience of 
+index.html
+ following HTML5 2026 best practices.
+
+Progress
+Phase 1: Analysis & Planning
+ Analyze current 
+index.html
+ structure (5048 lines)
+ Review existing assets
+ Create implementation plan
+ Get user approval
+Phase 2: Semantic HTML5 & Accessibility
+ Add proper ARIA landmarks and roles
+ Improve skip navigation links
+ Add proper heading hierarchy (h1-h6)
+ Add <main>, <article>, <aside> elements
+ Improve form accessibility (if any)
+ Add proper alt texts and figure/figcaption
+Phase 3: Modern CSS & Visual Enhancements
+ Add CSS container queries for responsive components
+ Implement CSS cascade layers for better specificity
+ Add prefers-color-scheme dark mode support
+ Improve focus-visible states
+ Add view transitions for smooth page navigation
+ Implement scroll-driven animations (CSS only)
+Phase 4: Performance & Core Web Vitals
+ Add resource hints (preload, prefetch)
+ Optimize font loading with font-display
+ Add loading="lazy" and decoding="async" to images
+ Implement fetchpriority for critical images
+ Add content-visibility for below-fold sections
+Phase 5: Interactive Enhancements
+ Improve modal accessibility (focus trap, aria-modal)
+ Add keyboard navigation improvements
+ Implement smooth scroll-snap for carousels
+ Add touch-friendly interactions
+Phase 6: Verification
+ Test accessibility with automated tools
+ Verify responsive design on multiple viewports
+ Test keyboard navigation
+ Check performance metrics
