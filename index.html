@@ -5583,6 +5583,259 @@
         <!-- Close Main Content Area -->
     </main>
 
+    <!-- ========== WINE MODAL ========== -->
+    <div id="wine-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="wine-modal-title">
+        <!-- Overlay -->
+        <div id="wine-modal-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"></div>
+        
+        <!-- Modal Content -->
+        <div class="absolute inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:max-w-2xl md:w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- Header -->
+            <div class="relative bg-gradient-to-r from-primary to-primary/80 text-white p-6">
+                <button id="wine-modal-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors" aria-label="Chiudi">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <span id="wine-modal-badge" class="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold mb-3"></span>
+                <h2 id="wine-modal-title" class="font-display text-2xl md:text-3xl font-bold"></h2>
+                <p id="wine-modal-producer" class="text-white/80 text-sm mt-1"></p>
+            </div>
+            
+            <!-- Body -->
+            <div class="flex-1 overflow-y-auto p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Left: Image -->
+                    <div class="flex items-center justify-center bg-gray-50 rounded-2xl p-4">
+                        <img id="wine-modal-image" src="" alt="" class="max-h-64 object-contain">
+                    </div>
+                    
+                    <!-- Right: Details -->
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Descrizione</h3>
+                            <p id="wine-modal-description" class="text-gray-700 text-sm leading-relaxed"></p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Vitigno</h3>
+                                <p id="wine-modal-grape" class="text-secondary font-medium"></p>
+                            </div>
+                            <div>
+                                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Regione</h3>
+                                <p id="wine-modal-region" class="text-secondary font-medium"></p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Abbinamenti</h3>
+                            <p id="wine-modal-pairing" class="text-gray-700 text-sm"></p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400">Prezzo indicativo</span>
+                                <p id="wine-modal-price" class="text-2xl font-bold text-primary"></p>
+                            </div>
+                            <div id="wine-modal-rating" class="text-yellow-400 text-lg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== WINE MODAL SCRIPT ========== -->
+    <script>
+        // Wine Data Object
+        const wineData = {
+            'bulli': {
+                name: 'Sampagnino Bianco',
+                producer: 'Bulli • Emilia-Romagna',
+                badge: '🥂 Spumante',
+                image: 'foto_vini/sampagnino-bianco-bulli.png',
+                description: 'Un vino frizzante naturale, fresco e beverino. Perfetto come aperitivo o con piatti leggeri.',
+                grape: 'Trebbiano, Ortrugo',
+                region: 'Emilia-Romagna',
+                pairing: 'Aperitivo, salumi, gnocco fritto, tigelle',
+                price: '€12',
+                rating: '★★★★☆'
+            },
+            'mos': {
+                name: 'Para-Se 2024',
+                producer: 'Agricola Mos • Trentino',
+                badge: '🍷 Rosso',
+                image: 'foto_vini/schiava-para-se-agricola-mos-202420251015172138_d7723339-8a92-41d7-a684-62a7d12caa8b.png',
+                description: 'Una Schiava di eccezionale freschezza, croccante e profumata. Il volto moderno del Trentino.',
+                grape: 'Schiava',
+                region: 'Trentino-Alto Adige',
+                pairing: 'Speck, canederli, formaggi freschi, carni bianche',
+                price: '€22',
+                rating: '★★★★★'
+            },
+            'fontenille': {
+                name: 'Alphonse 2022',
+                producer: 'Domaine de Fontenille • Provenza',
+                badge: '🥇 Selezione Internazionale',
+                image: 'foto_vini/alphonse_2022.png',
+                description: 'Un rosso provenzale di grande carattere, con note di mora e spezie dolci. Elegante e profondo.',
+                grape: 'Grenache, Syrah',
+                region: 'Luberon, Provenza (Francia)',
+                pairing: 'Agnello, stufati provenzali, formaggi stagionati',
+                price: '€42',
+                rating: '★★★★★'
+            },
+            'valdicava': {
+                name: 'Madonna del Piano Riserva 2019',
+                producer: 'Valdicava • Toscana',
+                badge: '💯 100/100 Ferraro',
+                image: 'foto_vini/valdicava_madonna_del_piano.png',
+                description: 'Brunello Riserva monumentale. Potenza, struttura e una capacità di invecchiamento infinita.',
+                grape: 'Sangiovese Grosso',
+                region: 'Montalcino, Toscana',
+                pairing: 'Cinghiale, bistecca fiorentina, pecorino stagionato',
+                price: '€280',
+                rating: '★★★★★'
+            },
+            'altemasi': {
+                name: 'Altemasi Graal Riserva 2018',
+                producer: 'Cavit • Trentino',
+                badge: '🍇 5 Grappoli Bibenda',
+                image: 'foto_vini/altemasi_riserva_graal_2018.png',
+                description: "L'eccellenza del Metodo Classico di montagna. Cremoso, minerale ed elegante.",
+                grape: 'Chardonnay',
+                region: 'Trentino',
+                pairing: 'Pesce crudo, crostacei, risotti delicati',
+                price: '€45',
+                rating: '★★★★★'
+            },
+            'montevertine': {
+                name: 'Le Pergole Torte 2022',
+                producer: 'Montevertine • Toscana',
+                badge: '🏆 Tre Bicchieri 2026',
+                image: 'foto_vini/montevertine_2022.png',
+                description: 'Il Sangiovese in purezza che sfida le convenzioni. Un\'icona di stile e tradizione toscana.',
+                grape: 'Sangiovese',
+                region: 'Radda in Chianti, Toscana',
+                pairing: 'Pappardelle al cinghiale, arrosti, formaggi toscani',
+                price: '€90',
+                rating: '★★★★★'
+            },
+            'ippolito': {
+                name: 'Ripe del Falco Riserva 2017',
+                producer: 'Ippolito 1845 • Calabria',
+                badge: '🍇 5 Grappoli 2025',
+                image: 'foto_vini/ripe_del_falco_2017.png',
+                description: "L'eccellenza del Sud. Un Gaglioppo Riserva di straordinaria complessità, premiato per la sua eleganza.",
+                grape: 'Gaglioppo',
+                region: 'Cirò, Calabria',
+                pairing: "'Nduja, capretto, peperoncini ripieni, caciocavallo",
+                price: '€40',
+                rating: '★★★★★'
+            },
+            'altesino': {
+                name: 'Brunello Montosoli 2020',
+                producer: 'Altesino • Toscana',
+                badge: '🏆 Tre Bicchieri 2026',
+                image: 'foto_vini/altesino_montosoli_2020.png',
+                description: 'Uno dei Cru più celebri di Montalcino. Un Brunello austero, profondo e di classe mondiale.',
+                grape: 'Sangiovese Grosso',
+                region: 'Montalcino, Toscana',
+                pairing: 'Selvaggina, tartufo, brasati, pecorino di Pienza',
+                price: '€95',
+                rating: '★★★★★'
+            },
+            'giodo': {
+                name: 'Brunello di Montalcino 2020',
+                producer: 'Giodo • Toscana',
+                badge: '🍷 Rosso dell\'Anno',
+                image: 'foto_vini/giodo_brunello_2020.png',
+                description: 'Eleganza e purezza. Un Brunello che cattura l\'essenza del territorio con straordinaria finezza.',
+                grape: 'Sangiovese Grosso',
+                region: 'Montalcino, Toscana',
+                pairing: 'Bistecca, pici al ragù, pecorino',
+                price: '€85',
+                rating: '★★★★★'
+            },
+            'bosio': {
+                name: 'Franciacorta Brut Nature 2021',
+                producer: 'Bosio • Lombardia',
+                badge: '🥂 Bollicine dell\'Anno',
+                image: 'foto_vini/bosio_franciacorta_nature.png',
+                description: 'Purezza assoluta senza dosaggio. Finezza e verticalità da vigneti d\'altura.',
+                grape: 'Chardonnay, Pinot Nero',
+                region: 'Franciacorta, Lombardia',
+                pairing: 'Ostriche, sushi, tartare di pesce',
+                price: '€35',
+                rating: '★★★★★'
+            },
+            'baldovino': {
+                name: 'Cerasuolo d\'Abruzzo Baldovino 2024',
+                producer: 'Tenuta I Fauri • Abruzzo',
+                badge: '🌹 Rosato dell\'Anno',
+                image: 'foto_vini/baldovino_2024_tenuta_i_fauri.png',
+                description: 'Il rosato italiano per eccellenza. Fresco, sapido e incredibilmente bevibile.',
+                grape: 'Montepulciano',
+                region: 'Abruzzo',
+                pairing: 'Antipasti di mare, pizza, grigliate estive',
+                price: '€15',
+                rating: '★★★★★'
+            }
+        };
+
+        // Modal Elements
+        const wineModal = document.getElementById('wine-modal');
+        const wineModalOverlay = document.getElementById('wine-modal-overlay');
+        const wineModalClose = document.getElementById('wine-modal-close');
+
+        // Open Modal Function
+        function openWineModal(wineId) {
+            const wine = wineData[wineId];
+            if (!wine) {
+                console.warn('Wine not found:', wineId);
+                return;
+            }
+
+            // Populate modal
+            document.getElementById('wine-modal-title').textContent = wine.name;
+            document.getElementById('wine-modal-producer').textContent = wine.producer;
+            document.getElementById('wine-modal-badge').textContent = wine.badge;
+            document.getElementById('wine-modal-image').src = wine.image;
+            document.getElementById('wine-modal-image').alt = wine.name;
+            document.getElementById('wine-modal-description').textContent = wine.description;
+            document.getElementById('wine-modal-grape').textContent = wine.grape;
+            document.getElementById('wine-modal-region').textContent = wine.region;
+            document.getElementById('wine-modal-pairing').textContent = wine.pairing;
+            document.getElementById('wine-modal-price').textContent = wine.price;
+            document.getElementById('wine-modal-rating').textContent = wine.rating;
+
+            // Show modal
+            wineModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            // Focus close button for accessibility
+            setTimeout(() => wineModalClose.focus(), 100);
+        }
+
+        // Close Modal Function
+        function closeWineModal() {
+            wineModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        wineModalClose.addEventListener('click', closeWineModal);
+        wineModalOverlay.addEventListener('click', closeWineModal);
+
+        // Close on ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !wineModal.classList.contains('hidden')) {
+                closeWineModal();
+            }
+        });
+    </script>
+
 </body>
 
 </html>
