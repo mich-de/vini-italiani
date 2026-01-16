@@ -466,10 +466,282 @@
             border-radius: 2rem;
             backdrop-filter: blur(10px);
         }
+
+        /* ==========================================
+           UX/UI OVERHAUL 2026 - NEW FEATURES
+           ========================================== */
+
+        /* === DARK MODE === */
+        .dark {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --border-color: #333;
+        }
+
+        .dark body,
+        .dark .bg-light,
+        .dark .bg-surface,
+        .dark .bg-white {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .dark .bg-gray-50,
+        .dark .bg-cream {
+            background-color: var(--bg-secondary) !important;
+        }
+
+        .dark .text-secondary,
+        .dark .text-gray-900,
+        .dark .text-gray-800 {
+            color: var(--text-primary) !important;
+        }
+
+        .dark .text-gray-600,
+        .dark .text-gray-500 {
+            color: var(--text-secondary) !important;
+        }
+
+        .dark .border-gray-100,
+        .dark .border-gray-200 {
+            border-color: var(--border-color) !important;
+        }
+
+        .dark nav {
+            background: rgba(15, 15, 15, 0.9) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        .dark .shadow-card,
+        .dark .shadow-xl {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .dark .dark-mode-toggle {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        /* === SCROLL PROGRESS BAR === */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #722F37 0%, #C9A962 50%, #FF5A1F 100%);
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px rgba(114, 47, 55, 0.5);
+        }
+
+        /* === GLASSMORPHISM CARDS === */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7) !important;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        }
+
+        .dark .glass-card {
+            background: rgba(37, 37, 37, 0.7) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* === MICRO-INTERACTIONS === */
+
+        /* Ripple Effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            pointer-events: none;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 10.01%);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            transform: translate(-50%, -50%) scale(10);
+            opacity: 0;
+            transition: transform 0.5s, opacity 1s;
+        }
+
+        .ripple:active::after {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 1;
+            transition: 0s;
+        }
+
+        /* Glow on Hover */
+        .glow-hover {
+            transition: all 0.3s ease;
+        }
+
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(114, 47, 55, 0.4), 0 0 60px rgba(114, 47, 55, 0.2);
+        }
+
+        /* Scale + Rotate on Hover */
+        .card-3d {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .card-3d:hover {
+            transform: translateY(-12px) rotateX(5deg) rotateY(-5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* === SCROLL ANIMATIONS === */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .stagger-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === MOBILE BOTTOM NAV === */
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                padding: 0.5rem 0;
+                z-index: 100;
+                display: flex;
+                justify-content: space-around;
+                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark .mobile-bottom-nav {
+                background: rgba(15, 15, 15, 0.95);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .mobile-bottom-nav a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.25rem;
+                font-size: 0.65rem;
+                color: #666;
+                text-decoration: none;
+                padding: 0.5rem;
+                transition: all 0.2s ease;
+            }
+
+            .mobile-bottom-nav a:hover,
+            .mobile-bottom-nav a.active {
+                color: #722F37;
+            }
+
+            .mobile-bottom-nav svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            /* Add padding to body to account for bottom nav */
+            body {
+                padding-bottom: 70px;
+            }
+        }
+
+        /* === TEXT GRADIENT FOR HERO === */
+        .text-gradient {
+            background: linear-gradient(135deg, #722F37 0%, #C9A962 50%, #FF5A1F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* === FLOATING ANIMATION === */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(3deg);
+            }
+        }
+
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* === PULSE GLOW === */
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(114, 47, 55, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(114, 47, 55, 0.6);
+            }
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
     </style>
 </head>
 
 <body class="bg-light font-sans text-gray-900 overflow-x-hidden">
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" role="progressbar" aria-label="Progresso lettura pagina"></div>
 
     <!-- Skip Navigation Link for Accessibility -->
     <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
@@ -563,13 +835,31 @@
                 </a>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="lg:hidden text-gray-800 focus:outline-none p-2" aria-label="Apri menu"
-                aria-expanded="false" aria-controls="mobile-menu-drawer">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
+            <div class="flex items-center gap-3">
+                <!-- Dark Mode Toggle -->
+                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Attiva/Disattiva modalità scura">
+                    <svg class="w-5 h-5 text-white sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                        </path>
+                    </svg>
+                    <svg class="w-5 h-5 text-white moon-icon hidden" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                        </path>
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-gray-800 focus:outline-none p-2"
+                    aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-menu-drawer">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -3297,8 +3587,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🏔️ Nebbiolo Nord
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Alto Piemonte"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/alto_piemonte.png" alt="Alto Piemonte"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3340,8 +3630,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🏰 Sabbie Nobili
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Roero"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/roero_docg.png" alt="Roero DOCG"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3384,8 +3674,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🌹 Il Principe
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Ruchè"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/ruche.png" alt="Ruchè"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3427,8 +3717,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 ⛽ Minerale
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Timorasso"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/timorasso.png" alt="Timorasso"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3471,8 +3761,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🌊 Lago
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Lugana"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/lugana.png" alt="Lugana"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3513,8 +3803,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 💎 Rarità
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Moscato di Scanzo"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/moscato_scanzo.png" alt="Moscato di Scanzo"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3554,8 +3844,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🍊 Aromatico
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Fior d'Arancio"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/fior_arancio.png" alt="Fior d'Arancio"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3595,8 +3885,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🏺 Classico
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Grechetto"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/grechetto.png" alt="Grechetto"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3636,8 +3926,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🐺 Roma
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Cesanese"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/cesanese_piglio.png" alt="Cesanese del Piglio"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3675,8 +3965,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🟣 Aromatico
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Lacrima"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/lacrima_morro.png" alt="Lacrima di Morro d'Alba"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3715,8 +4005,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 ✨ Unico
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Vernaccia Nera"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/vernaccia_serrapetrona.png" alt="Vernaccia di Serrapetrona"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3757,8 +4047,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 ⛰️ Molise
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Tintilia"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/tintilia.png" alt="Tintilia del Molise"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3798,8 +4088,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🐴 Potenza
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Susumaniello"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/susumaniello.png" alt="Susumaniello"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3842,8 +4132,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🇬🇷 Antico
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Cirò"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/ciro_rosso.png" alt="Cirò Rosso"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3883,8 +4173,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🌋 Vulcano
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Etna Rosso"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/etna_rosso.png" alt="Etna Rosso"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3923,8 +4213,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🍋 Salino
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Etna Bianco"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/etna_bianco.png" alt="Etna Bianco"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -3966,8 +4256,8 @@
                                 class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl text-xs font-bold shadow-sm border border-gray-100">
                                 🍒 Succoso
                             </div>
-                            <img src="assets/wine_bottle.png" alt="Cerasuolo Vittoria"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100">
+                            <img src="foto_vini/cerasuolo_vittoria.png" alt="Cerasuolo di Vittoria"
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="px-2 pb-4 flex-grow">
                             <div class="flex justify-between items-start mb-2">
@@ -5584,24 +5874,31 @@
     </main>
 
     <!-- ========== WINE MODAL ========== -->
-    <div id="wine-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="wine-modal-title">
+    <div id="wine-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true"
+        aria-labelledby="wine-modal-title">
         <!-- Overlay -->
-        <div id="wine-modal-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"></div>
-        
+        <div id="wine-modal-overlay"
+            class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"></div>
+
         <!-- Modal Content -->
-        <div class="absolute inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:max-w-2xl md:w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div
+            class="absolute inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:max-w-2xl md:w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <!-- Header -->
             <div class="relative bg-gradient-to-r from-primary to-primary/80 text-white p-6">
-                <button id="wine-modal-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors" aria-label="Chiudi">
+                <button id="wine-modal-close"
+                    class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                    aria-label="Chiudi">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <span id="wine-modal-badge" class="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold mb-3"></span>
+                <span id="wine-modal-badge"
+                    class="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold mb-3"></span>
                 <h2 id="wine-modal-title" class="font-display text-2xl md:text-3xl font-bold"></h2>
                 <p id="wine-modal-producer" class="text-white/80 text-sm mt-1"></p>
             </div>
-            
+
             <!-- Body -->
             <div class="flex-1 overflow-y-auto p-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -5609,14 +5906,14 @@
                     <div class="flex items-center justify-center bg-gray-50 rounded-2xl p-4">
                         <img id="wine-modal-image" src="" alt="" class="max-h-64 object-contain">
                     </div>
-                    
+
                     <!-- Right: Details -->
                     <div class="space-y-4">
                         <div>
                             <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Descrizione</h3>
                             <p id="wine-modal-description" class="text-gray-700 text-sm leading-relaxed"></p>
                         </div>
-                        
+
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Vitigno</h3>
@@ -5627,12 +5924,12 @@
                                 <p id="wine-modal-region" class="text-secondary font-medium"></p>
                             </div>
                         </div>
-                        
+
                         <div>
                             <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Abbinamenti</h3>
                             <p id="wine-modal-pairing" class="text-gray-700 text-sm"></p>
                         </div>
-                        
+
                         <div class="flex items-center justify-between pt-4 border-t border-gray-100">
                             <div>
                                 <span class="text-xs text-gray-400">Prezzo indicativo</span>
@@ -5813,7 +6110,7 @@
             // Show modal
             wineModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
-            
+
             // Focus close button for accessibility
             setTimeout(() => wineModalClose.focus(), 100);
         }
@@ -5829,11 +6126,135 @@
         wineModalOverlay.addEventListener('click', closeWineModal);
 
         // Close on ESC
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && !wineModal.classList.contains('hidden')) {
                 closeWineModal();
             }
         });
+    </script>
+
+    <!-- UX/UI Enhancement Scripts -->
+    <script>
+        // ==========================================
+        // SCROLL PROGRESS BAR
+        // ==========================================
+        const scrollProgress = document.getElementById('scroll-progress');
+
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+
+        window.addEventListener('scroll', updateScrollProgress, { passive: true });
+        updateScrollProgress(); // Initial call
+
+        // ==========================================
+        // DARK MODE TOGGLE
+        // ==========================================
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const html = document.documentElement;
+        const sunIcon = darkModeToggle.querySelector('.sun-icon');
+        const moonIcon = darkModeToggle.querySelector('.moon-icon');
+
+        // Check for saved preference or system preference
+        function initDarkMode() {
+            const savedMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedMode === 'true' || (savedMode === null && prefersDark)) {
+                enableDarkMode();
+            }
+        }
+
+        function enableDarkMode() {
+            html.classList.add('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+            localStorage.setItem('darkMode', 'true');
+        }
+
+        function disableDarkMode() {
+            html.classList.remove('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+            localStorage.setItem('darkMode', 'false');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+
+        initDarkMode(); // Apply on load
+
+        // ==========================================
+        // SCROLL-TRIGGERED ANIMATIONS
+        // ==========================================
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -100px 0px',
+            threshold: 0.1
+        };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Add stagger delay for items
+                    const delay = entry.target.dataset.stagger ?
+                        parseInt(entry.target.dataset.stagger) * 100 : 0;
+
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-up and stagger-item elements
+        document.querySelectorAll('.fade-up, .stagger-item').forEach(el => {
+            scrollObserver.observe(el);
+        });
+
+        // ==========================================
+        // ADD CLASSES TO EXISTING ELEMENTS
+        // ==========================================
+        // Add glassmorphism to hero cards
+        document.querySelectorAll('#hero .bg-white').forEach(card => {
+            card.classList.add('glass-card');
+        });
+
+        // Add glow-hover to CTA buttons
+        document.querySelectorAll('a[href="#catalog"]').forEach(btn => {
+            if (btn.classList.contains('bg-primary')) {
+                btn.classList.add('glow-hover', 'ripple');
+            }
+        });
+
+        // Add 3D effect to wine cards
+        document.querySelectorAll('#catalog .rounded-\\[2rem\\]').forEach(card => {
+            card.classList.add('card-3d');
+        });
+
+        // ==========================================
+        // PREFERS REDUCED MOTION CHECK
+        // ==========================================
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // Disable all animations for users who prefer reduced motion
+            document.querySelectorAll('.fade-up, .stagger-item, .float-animation, .pulse-glow').forEach(el => {
+                el.style.transition = 'none';
+                el.style.animation = 'none';
+                el.classList.add('visible');
+            });
+        }
+
+        console.log('✨ UX/UI Overhaul 2026 loaded successfully!');
     </script>
 
 </body>
