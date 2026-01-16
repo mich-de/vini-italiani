@@ -472,7 +472,7 @@
            ========================================== */
 
         /* === DARK MODE === */
-        .dark {
+        html.dark {
             --bg-primary: #0f0f0f;
             --bg-secondary: #1a1a1a;
             --bg-card: #252525;
@@ -481,43 +481,49 @@
             --border-color: #333;
         }
 
-        .dark body,
-        .dark .bg-light,
-        .dark .bg-surface,
-        .dark .bg-white {
-            background-color: var(--bg-primary) !important;
-            color: var(--text-primary) !important;
+        html.dark body,
+        html.dark .bg-light,
+        html.dark .bg-surface,
+        html.dark .bg-white {
+            background-color: #0f0f0f !important;
+            color: #f5f5f5 !important;
         }
 
-        .dark .bg-gray-50,
-        .dark .bg-cream {
-            background-color: var(--bg-secondary) !important;
+        html.dark .bg-gray-50,
+        html.dark .bg-cream {
+            background-color: #1a1a1a !important;
         }
 
-        .dark .text-secondary,
-        .dark .text-gray-900,
-        .dark .text-gray-800 {
-            color: var(--text-primary) !important;
+        html.dark .text-secondary,
+        html.dark .text-gray-900,
+        html.dark .text-gray-800 {
+            color: #f5f5f5 !important;
         }
 
-        .dark .text-gray-600,
-        .dark .text-gray-500 {
-            color: var(--text-secondary) !important;
+        html.dark .text-gray-600,
+        html.dark .text-gray-500 {
+            color: #a0a0a0 !important;
         }
 
-        .dark .border-gray-100,
-        .dark .border-gray-200 {
-            border-color: var(--border-color) !important;
+        html.dark .border-gray-100,
+        html.dark .border-gray-200 {
+            border-color: #333 !important;
         }
 
-        .dark nav {
-            background: rgba(15, 15, 15, 0.9) !important;
-            border-color: var(--border-color) !important;
+        html.dark nav {
+            background: rgba(15, 15, 15, 0.95) !important;
+            border-color: #333 !important;
         }
 
-        .dark .shadow-card,
-        .dark .shadow-xl {
+        html.dark .shadow-card,
+        html.dark .shadow-xl {
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        html.dark .rounded-\[2rem\],
+        html.dark .rounded-3xl,
+        html.dark .rounded-2xl {
+            background-color: #1a1a1a !important;
         }
 
         /* Dark Mode Toggle Button */
@@ -540,7 +546,7 @@
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
 
-        .dark .dark-mode-toggle {
+        html.dark .dark-mode-toggle {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
@@ -565,7 +571,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3) !important;
         }
 
-        .dark .glass-card {
+        html.dark .glass-card {
             background: rgba(37, 37, 37, 0.7) !important;
             border: 1px solid rgba(255, 255, 255, 0.1) !important;
         }
@@ -661,7 +667,7 @@
                 box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
             }
 
-            .dark .mobile-bottom-nav {
+            html.dark .mobile-bottom-nav {
                 background: rgba(15, 15, 15, 0.95);
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
             }
@@ -1014,6 +1020,80 @@
                         certificata e
                         garantita.
                     </p>
+                </div>
+
+                <!-- Region Filter Bar -->
+                <div class="mb-12">
+                    <div class="flex flex-wrap items-center justify-center gap-3 mb-6">
+                        <!-- Show All Button -->
+                        <button
+                            class="region-filter-btn active px-4 py-2 rounded-full text-sm font-bold transition-all bg-primary text-white shadow-lg"
+                            data-region="all">
+                            🌍 Tutti
+                        </button>
+                    </div>
+
+                    <!-- Country Groups -->
+                    <div class="flex flex-wrap justify-center gap-8">
+                        <!-- Italia -->
+                        <div class="text-center">
+                            <div class="flex items-center gap-2 mb-3 justify-center">
+                                <span class="text-2xl">🇮🇹</span>
+                                <span class="font-bold text-secondary">Italia</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2 justify-center max-w-md">
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-gray-100 text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    data-region="toscana">Toscana</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-gray-100 text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    data-region="piemonte">Piemonte</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-gray-100 text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    data-region="lombardia">Lombardia</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-gray-100 text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    data-region="veneto">Veneto</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-gray-100 text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    data-region="abruzzo">Abruzzo</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-gray-100 text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    data-region="sicilia">Sicilia</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-gray-100 text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    data-region="puglia">Puglia</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-gray-100 text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    data-region="calabria">Calabria</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-gray-100 text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    data-region="trentino">Trentino</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-gray-100 text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    data-region="emilia">Emilia Romagna</button>
+                            </div>
+                        </div>
+
+                        <!-- Francia -->
+                        <div class="text-center">
+                            <div class="flex items-center gap-2 mb-3 justify-center">
+                                <span class="text-2xl">🇫🇷</span>
+                                <span class="font-bold text-secondary">Francia</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2 justify-center">
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200"
+                                    data-region="provenza">Provenza</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200"
+                                    data-region="champagne">Champagne</button>
+                                <button
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200"
+                                    data-region="bordeaux">Bordeaux</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Grid -->
@@ -4288,6 +4368,126 @@
                         </div>
                     </div>
 
+                    <!-- ISCHIA WINES - Bonus Outsider Campania -->
+                    <!-- 18. Ischia Biancolella -->
+                    <div
+                        class="bg-gradient-to-br from-amber-50 to-white rounded-[2rem] p-4 shadow-card hover:shadow-xl transition-all duration-300 border-2 border-amber-300 flex flex-col group">
+                        <div
+                            class="relative h-72 bg-amber-50/50 rounded-[1.5rem] flex items-center justify-center overflow-hidden mb-6">
+                            <div
+                                class="absolute top-4 left-4 z-10 bg-amber-500 text-white p-2 rounded-xl text-xs font-bold shadow-sm">
+                                🏆 Premiato 2025
+                            </div>
+                            <span class="text-8xl">🍾</span>
+                        </div>
+                        <div class="px-2 pb-4 flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-display text-2xl font-bold text-secondary">Ischia Biancolella</h3>
+                                <span
+                                    class="font-bold text-amber-600 text-sm bg-amber-100 px-2 py-1 rounded-lg">~€18</span>
+                            </div>
+                            <p class="text-sm font-medium text-gray-500 mb-4 uppercase tracking-wide">🇮🇹 Ischia
+                                (Campania)</p>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                Bianco vulcanico con note di agrumi, mandorla e mineralità marina. Casa D'Ambra e
+                                Cenatiempo i top producer.
+                            </p>
+                            <details class="group/details">
+                                <summary
+                                    class="cursor-pointer text-primary font-bold text-sm select-none list-none flex items-center gap-2">
+                                    <span>Scheda Completa</span>
+                                    <span class="group-open/details:rotate-180 transition-transform">▼</span>
+                                </summary>
+                                <div class="mt-4 text-xs text-gray-500 bg-gray-50 p-4 rounded-xl leading-relaxed">
+                                    <p class="mb-2"><strong>Colore:</strong> Giallo paglierino con riflessi verdolini.
+                                    </p>
+                                    <p class="mb-2"><strong>Naso:</strong> Agrumi, mandorla, fiori bianchi, note
+                                        vulcaniche.</p>
+                                    <p class="mb-2"><strong>Gusto:</strong> Fresco, sapido, minerale con finale
+                                        ammandorlato.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 19. Ischia Forastera -->
+                    <div
+                        class="bg-gradient-to-br from-amber-50 to-white rounded-[2rem] p-4 shadow-card hover:shadow-xl transition-all duration-300 border-2 border-amber-300 flex flex-col group">
+                        <div
+                            class="relative h-72 bg-amber-50/50 rounded-[1.5rem] flex items-center justify-center overflow-hidden mb-6">
+                            <div
+                                class="absolute top-4 left-4 z-10 bg-amber-500 text-white p-2 rounded-xl text-xs font-bold shadow-sm">
+                                🏆 Premiato 2025
+                            </div>
+                            <span class="text-8xl">🍾</span>
+                        </div>
+                        <div class="px-2 pb-4 flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-display text-2xl font-bold text-secondary">Ischia Forastera</h3>
+                                <span
+                                    class="font-bold text-amber-600 text-sm bg-amber-100 px-2 py-1 rounded-lg">~€15</span>
+                            </div>
+                            <p class="text-sm font-medium text-gray-500 mb-4 uppercase tracking-wide">🇮🇹 Ischia
+                                (Campania)</p>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                Bianco fresco e sapido. Profumi di fiori bianchi, pesca e note iodate. Perfetto per
+                                pesce e frutti di mare.
+                            </p>
+                            <details class="group/details">
+                                <summary
+                                    class="cursor-pointer text-primary font-bold text-sm select-none list-none flex items-center gap-2">
+                                    <span>Scheda Completa</span>
+                                    <span class="group-open/details:rotate-180 transition-transform">▼</span>
+                                </summary>
+                                <div class="mt-4 text-xs text-gray-500 bg-gray-50 p-4 rounded-xl leading-relaxed">
+                                    <p class="mb-2"><strong>Colore:</strong> Giallo paglierino brillante.</p>
+                                    <p class="mb-2"><strong>Naso:</strong> Fiori bianchi, pesca, pera, note iodate.</p>
+                                    <p class="mb-2"><strong>Gusto:</strong> Fresco, leggero, piacevole sapidità
+                                        marina.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 20. Per' 'e Palummo -->
+                    <div
+                        class="bg-gradient-to-br from-amber-50 to-white rounded-[2rem] p-4 shadow-card hover:shadow-xl transition-all duration-300 border-2 border-amber-300 flex flex-col group">
+                        <div
+                            class="relative h-72 bg-amber-50/50 rounded-[1.5rem] flex items-center justify-center overflow-hidden mb-6">
+                            <div
+                                class="absolute top-4 left-4 z-10 bg-amber-500 text-white p-2 rounded-xl text-xs font-bold shadow-sm">
+                                🏆 Premiato 2025
+                            </div>
+                            <span class="text-8xl">🍷</span>
+                        </div>
+                        <div class="px-2 pb-4 flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-display text-2xl font-bold text-secondary">Per' 'e Palummo</h3>
+                                <span
+                                    class="font-bold text-amber-600 text-sm bg-amber-100 px-2 py-1 rounded-lg">~€22</span>
+                            </div>
+                            <p class="text-sm font-medium text-gray-500 mb-4 uppercase tracking-wide">🇮🇹 Ischia
+                                (Campania)</p>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                Rosso autoctono (Piedirosso). Elegante, con tannini setosi e note di ciliegia e spezie.
+                                Pietratorcia eccelle.
+                            </p>
+                            <details class="group/details">
+                                <summary
+                                    class="cursor-pointer text-primary font-bold text-sm select-none list-none flex items-center gap-2">
+                                    <span>Scheda Completa</span>
+                                    <span class="group-open/details:rotate-180 transition-transform">▼</span>
+                                </summary>
+                                <div class="mt-4 text-xs text-gray-500 bg-gray-50 p-4 rounded-xl leading-relaxed">
+                                    <p class="mb-2"><strong>Colore:</strong> Rosso rubino con riflessi granati.</p>
+                                    <p class="mb-2"><strong>Naso:</strong> Ciliegia, spezie, erbe mediterranee.</p>
+                                    <p class="mb-2"><strong>Gusto:</strong> Medio corpo, tannini setosi, piacevole
+                                        freschezza.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -4699,26 +4899,61 @@
                     <div class="overflow-x-auto max-h-[800px] overflow-y-auto custom-scrollbar">
                         <table class="w-full text-sm text-left text-gray-600">
                             <thead
-                                class="bg-secondary text-white font-display text-sm uppercase tracking-wider sticky top-0 z-10 shadow-md">
+                                class="bg-gradient-to-r from-secondary to-gray-800 text-white font-display text-sm uppercase tracking-wider sticky top-0 z-10 shadow-md">
                                 <tr>
                                     <th scope="col"
                                         class="px-8 py-6 cursor-pointer hover:bg-white/10 transition-colors select-none"
-                                        onclick="sortTable('glossary', 0)">Vino / Tipologia</th>
+                                        onclick="sortTable('glossary', 0)">
+                                        <div class="flex items-center gap-2">
+                                            <span>🍷</span>
+                                            <span>Vino / Tipologia</span>
+                                            <svg class="w-4 h-4 opacity-50" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                            </svg>
+                                        </div>
+                                    </th>
                                     <th scope="col"
                                         class="px-8 py-6 cursor-pointer hover:bg-white/10 transition-colors select-none"
-                                        onclick="sortTable('glossary', 1)">Regione</th>
+                                        onclick="sortTable('glossary', 1)">
+                                        <div class="flex items-center gap-2">
+                                            <span>🌍</span>
+                                            <span>Regione / Paese</span>
+                                            <svg class="w-4 h-4 opacity-50" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                            </svg>
+                                        </div>
+                                    </th>
                                     <th scope="col"
                                         class="px-8 py-6 cursor-pointer hover:bg-white/10 transition-colors select-none"
-                                        onclick="sortTable('glossary', 2)">Prezzo Rif.</th>
+                                        onclick="sortTable('glossary', 2)">
+                                        <div class="flex items-center gap-2">
+                                            <span>💰</span>
+                                            <span>Prezzo Rif.</span>
+                                            <svg class="w-4 h-4 opacity-50" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                            </svg>
+                                        </div>
+                                    </th>
                                     <th scope="col"
                                         class="px-8 py-6 cursor-pointer hover:bg-white/10 transition-colors select-none"
-                                        onclick="sortTable('glossary', 3)">Note & Caratteristiche</th>
+                                        onclick="sortTable('glossary', 3)">
+                                        <div class="flex items-center gap-2">
+                                            <span>📝</span>
+                                            <span>Note & Caratteristiche</span>
+                                        </div>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
                                 <tr class="bg-white hover:bg-gray-50">
                                     <td class="px-6 py-4 font-bold text-primary">Vino Novello</td>
-                                    <td class="px-6 py-4">Italia</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇮🇹</span> Italia</td>
                                     <td class="px-6 py-4 font-mono text-gray-900">~ 10 €</td>
                                     <td class="px-6 py-4">Prodotto con macerazione carbonica; deve avere note
                                         fruttate e
@@ -4726,7 +4961,7 @@
                                 </tr>
                                 <tr class="bg-white hover:bg-gray-50">
                                     <td class="px-6 py-4 font-bold text-primary">Sauternes</td>
-                                    <td class="px-6 py-4">Francia (Bordeaux)</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇫🇷</span> Francia (Bordeaux)</td>
                                     <td class="px-6 py-4 font-mono text-gray-900">35 € - 500+ €</td>
                                     <td class="px-6 py-4">Ottenuto da uve botrytizzate (muffa nobile); longevità
                                         incredibile,
@@ -4734,7 +4969,9 @@
                                 </tr>
                                 <tr class="bg-white hover:bg-gray-50">
                                     <td class="px-6 py-4 font-bold text-primary">Ice Wine (Eiswein)</td>
-                                    <td class="px-6 py-4">Canada, Austria, Germania</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇨🇦</span> Canada, <span
+                                            class="mr-1">🇦🇹</span> Austria, <span class="mr-1">🇩🇪</span> Germania
+                                    </td>
                                     <td class="px-6 py-4 font-mono text-gray-900">40 € - 100+ €</td>
                                     <td class="px-6 py-4">Uve vendemmiate ghicciate (-7/-10°C). Concentrazione
                                         estrema e
@@ -4742,7 +4979,7 @@
                                 </tr>
                                 <tr class="bg-white hover:bg-gray-50">
                                     <td class="px-6 py-4 font-bold text-primary">Negroamaro</td>
-                                    <td class="px-6 py-4">Puglia</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇮🇹</span> Puglia</td>
                                     <td class="px-6 py-4 font-mono text-gray-900">8 € - 18 €</td>
                                     <td class="px-6 py-4">Vino dal colore molto intenso; può essere utilizzato anche
                                         per
@@ -4750,7 +4987,8 @@
                                 </tr>
                                 <tr class="bg-white hover:bg-gray-50">
                                     <td class="px-6 py-4 font-bold text-primary">Chiaretto del Garda</td>
-                                    <td class="px-6 py-4">Lago di Garda (Lombardia/Veneto)</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇮🇹</span> Lago di Garda
+                                        (Lombardia/Veneto)</td>
                                     <td class="px-6 py-4 font-mono text-gray-900">8 € - 15 €</td>
                                     <td class="px-6 py-4">Rosato con colore scarico e brillante, delicato e
                                         floreale.
@@ -4758,7 +4996,7 @@
                                 </tr>
                                 <tr class="bg-white hover:bg-gray-50">
                                     <td class="px-6 py-4 font-bold text-primary">Sangiovese</td>
-                                    <td class="px-6 py-4">Toscana, Emilia Romagna</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇮🇹</span> Toscana, Emilia Romagna</td>
                                     <td class="px-6 py-4 font-mono text-gray-900">8 € - 25+ €</td>
                                     <td class="px-6 py-4">Vitigno principe italiano. Evolve verso granato/aranciato;
                                         tannino
@@ -4766,7 +5004,7 @@
                                 </tr>
                                 <tr class="bg-white hover:bg-gray-50">
                                     <td class="px-6 py-4 font-bold text-primary">Nebbiolo</td>
-                                    <td class="px-6 py-4">Piemonte, Lombardia</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇮🇹</span> Piemonte, Lombardia</td>
                                     <td class="px-6 py-4 font-mono text-gray-900">12 € - 30 €</td>
                                     <td class="px-6 py-4">Raggiunge velocemente tonalità aranciate; tannico,
                                         elegante,
@@ -4803,7 +5041,8 @@
                                 </tr>
                                 <tr class="bg-white hover:bg-gray-50">
                                     <td class="px-6 py-4 font-bold text-primary">Gewürztraminer</td>
-                                    <td class="px-6 py-4">Alto Adige, Cile</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇮🇹</span> Alto Adige, <span
+                                            class="mr-1">🇨🇱</span> Cile</td>
                                     <td class="px-6 py-4 font-mono text-gray-900">12 € - 25 €</td>
                                     <td class="px-6 py-4">Vitigno aromatico per eccellenza (Litchi, Rosa). Esiste
                                         anche
@@ -4812,7 +5051,8 @@
                                 </tr>
                                 <tr class="bg-white hover:bg-gray-50">
                                     <td class="px-6 py-4 font-bold text-primary">Pinot Nero (Vinif. Bianco)</td>
-                                    <td class="px-6 py-4">Oltrepò Pavese, Champagne</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇮🇹</span> Oltrepò Pavese, <span
+                                            class="mr-1">🇫🇷</span> Champagne</td>
                                     <td class="px-6 py-4 font-mono text-gray-900">10 € - 22 €</td>
                                     <td class="px-6 py-4">Base per spumanti o fermo. Uva rossa vinificata senza
                                         bucce
@@ -5060,6 +5300,31 @@
                                         banana,
                                         burro, vaniglia.</td>
                                 </tr>
+                                <!-- ISCHIA WINES - Premiati 2025 -->
+                                <tr class="bg-amber-50 hover:bg-amber-100 border-l-4 border-amber-400">
+                                    <td class="px-6 py-4 font-bold text-primary">🏆 Ischia Biancolella</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇮🇹</span> Ischia (Campania)</td>
+                                    <td class="px-6 py-4 font-mono text-gray-900">12 € - 25 €</td>
+                                    <td class="px-6 py-4"><strong>Premiato 2025</strong> - Vitigno bianco autoctono
+                                        ischitano. Note di agrumi, mandorla e mineralità vulcanica. Casa D'Ambra,
+                                        Cenatiempo tra i migliori produttori.</td>
+                                </tr>
+                                <tr class="bg-amber-50 hover:bg-amber-100 border-l-4 border-amber-400">
+                                    <td class="px-6 py-4 font-bold text-primary">🏆 Ischia Forastera</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇮🇹</span> Ischia (Campania)</td>
+                                    <td class="px-6 py-4 font-mono text-gray-900">10 € - 22 €</td>
+                                    <td class="px-6 py-4"><strong>Premiato 2025</strong> - Bianco fresco e sapido.
+                                        Profumi di fiori bianchi, pesca e note iodate. Perfetto con pesce e
+                                        frutti di mare.</td>
+                                </tr>
+                                <tr class="bg-amber-50 hover:bg-amber-100 border-l-4 border-amber-400">
+                                    <td class="px-6 py-4 font-bold text-primary">🏆 Per' 'e Palummo (Piedirosso)</td>
+                                    <td class="px-6 py-4"><span class="mr-1">🇮🇹</span> Ischia (Campania)</td>
+                                    <td class="px-6 py-4 font-mono text-gray-900">15 € - 30 €</td>
+                                    <td class="px-6 py-4"><strong>Premiato 2025</strong> - Rosso autoctono dal nome
+                                        curioso ("piede di colombo"). Elegante, leggermente tannico con note di
+                                        ciliegia e spezie. Pietratorcia eccellente.</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -5142,31 +5407,64 @@
                 const tableBody = document.querySelector('#glossary table tbody');
 
                 if (tableBody && regionSelect) {
+                    // Define country-region mapping
+                    const countryRegions = {
+                        '🇮🇹 Italia': [
+                            'Italia', 'Piemonte', 'Lombardia', 'Veneto', 'Trentino', 'Alto Adige',
+                            'Friuli', 'Toscana', 'Emilia Romagna', 'Umbria', 'Marche', 'Lazio',
+                            'Abruzzo', 'Molise', 'Campania', 'Ischia', 'Puglia', 'Basilicata', 'Calabria',
+                            'Sicilia', 'Sardegna', 'Langhe', 'Franciacorta', 'Oltrepò Pavese',
+                            'Lago di Garda', 'Montalcino', 'Liguria', 'Cirò', 'Torino', '5 Terre'
+                        ],
+                        '🇫🇷 Francia': [
+                            'Francia', 'Bordeaux', 'Champagne', 'Provenza', 'Borgogna', 'Loira', 'Alsazia'
+                        ],
+                        '🇩🇪 Germania': ['Germania'],
+                        '🇦🇹 Austria': ['Austria'],
+                        '🇨🇦 Canada': ['Canada'],
+                        '🇨🇱 Cile': ['Cile'],
+                        '🇪🇸 Spagna': ['Spagna'],
+                        '🇵🇹 Portogallo': ['Portogallo'],
+                        '🇬🇷 Grecia': ['Grecia'],
+                        '🇭🇺 Ungheria': ['Ungheria'],
+                        '🌍 Internazionale': ['Internazionale']
+                    };
+
+                    // Get all regions from table to find which ones exist
                     const rows = tableBody.getElementsByTagName('tr');
-                    const regions = new Set();
+                    const existingRegions = new Set();
+
                     for (let row of rows) {
-                        // Check column 2 (index 1) which is Region
                         const cells = row.getElementsByTagName('td');
                         if (cells.length > 1) {
                             let text = cells[1].textContent;
-                            // Remove text in parentheses (e.g., "Piemonte (Langhe)" -> "Piemonte ")
-                            text = text.replace(/\(.*\)/g, '');
-                            // Split by comma or slash
+                            text = text.replace(/[\u{1F1E6}-\u{1F1FF}]/gu, '');
+                            text = text.replace(/\(.*?\)/g, '');
+                            text = text.replace(/[^\w\s,\/àèéìòùü]/gi, '');
                             const parts = text.split(/[,/]/);
-
                             parts.forEach(part => {
-                                const cleanRegion = part.trim();
-                                if (cleanRegion && cleanRegion.length > 2) { // Filter out empty or too short
-                                    regions.add(cleanRegion);
-                                }
+                                const clean = part.trim();
+                                if (clean && clean.length > 2) existingRegions.add(clean);
                             });
                         }
                     }
-                    Array.from(regions).sort().forEach(region => {
-                        const option = document.createElement('option');
-                        option.value = region;
-                        option.textContent = region;
-                        regionSelect.appendChild(option);
+
+                    // Create optgroups for each country that has matching regions
+                    Object.entries(countryRegions).forEach(([country, regions]) => {
+                        const matchingRegions = regions.filter(r => existingRegions.has(r));
+                        if (matchingRegions.length > 0) {
+                            const optgroup = document.createElement('optgroup');
+                            optgroup.label = country;
+
+                            matchingRegions.sort().forEach(region => {
+                                const option = document.createElement('option');
+                                option.value = region;
+                                option.textContent = region;
+                                optgroup.appendChild(option);
+                            });
+
+                            regionSelect.appendChild(optgroup);
+                        }
                     });
                 }
             });
@@ -5389,7 +5687,7 @@
         <script>
             const winesData = {
                 'giodo': {
-                    producer: 'Giodo',
+                    oducer: 'Giodo',
                     name: 'Brunello di Montalcino 2020',
                     region: 'Toscana',
                     type: 'Rosso DOCG',
@@ -5620,7 +5918,7 @@
         <!-- UI/UX 2026 Enhancements -->
         <script>
             // Navbar Shrink on Scroll
-            const nav = document.querySelector('nav');
+       st nav = doctor('nav');
             const backToTop = document.getElementById('backToTop');
 
             window.addEventListener('scroll', () => {
@@ -5766,30 +6064,29 @@
         <!-- ========== ACCESSIBILITY & KEYBOARD NAVIGATION ========== -->
         <script>
             // Focus trap for modals
-            function trapFocus(element) {
-                const focusableElements = element.querySelectorAll(
-                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-                );
-                if (focusableElements.length === 0) return;
+            functFoc              const focusableElements = element.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            if (focusableElements.length === 0) return;
 
-                const firstFocusable = focusableElements[0];
-                const lastFocusable = focusableElements[focusableElements.length - 1];
+            const firstFocusable = focusableElements[0];
+            const lastFocusable = focusableElements[focusableElements.length - 1];
 
-                element.addEventListener('keydown', function (e) {
-                    if (e.key !== 'Tab') return;
+            element.addEventListener('keydown', function (e) {
+                if (e.key !== 'Tab') return;
 
-                    if (e.shiftKey) {
-                        if (document.activeElement === firstFocusable) {
-                            e.preventDefault();
-                            lastFocusable.focus();
-                        }
-                    } else {
-                        if (document.activeElement === lastFocusable) {
-                            e.preventDefault();
-                            firstFocusable.focus();
-                        }
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusable) {
+                        e.preventDefault();
+                        lastFocusable.focus();
                     }
-                });
+                } else {
+                    if (document.activeElement === lastFocusable) {
+                        e.preventDefault();
+                        firstFocusable.focus();
+                    }
+                }
+            });
             }
 
             // Apply focus trap to mobile menu
@@ -5947,138 +6244,137 @@
     <script>
         // Wine Data Object
         const wineData = {
-            'bulli': {
-                name: 'Sampagnino Bianco',
+            'b             name: 'Sampagnino Bianco',
                 producer: 'Bulli • Emilia-Romagna',
-                badge: '🥂 Spumante',
-                image: 'foto_vini/sampagnino-bianco-bulli.png',
-                description: 'Un vino frizzante naturale, fresco e beverino. Perfetto come aperitivo o con piatti leggeri.',
-                grape: 'Trebbiano, Ortrugo',
-                region: 'Emilia-Romagna',
-                pairing: 'Aperitivo, salumi, gnocco fritto, tigelle',
-                price: '€12',
-                rating: '★★★★☆'
-            },
-            'mos': {
-                name: 'Para-Se 2024',
+            badge: '🥂 Spumante',
+            image: 'foto_vini/sampagnino-bianco-bulli.png',
+            description: 'Un vino frizzante naturale, fresco e beverino. Perfetto come aperitivo o con piatti leggeri.',
+            grape: 'Trebbiano, Ortrugo',
+            region: 'Emilia-Romagna',
+            pairing: 'Aperitivo, salumi, gnocco fritto, tigelle',
+            price: '€12',
+            rating: '★★★★☆'
+        },
+        'mos': {
+            name: 'Para-Se 2024',
                 producer: 'Agricola Mos • Trentino',
-                badge: '🍷 Rosso',
-                image: 'foto_vini/schiava-para-se-agricola-mos-202420251015172138_d7723339-8a92-41d7-a684-62a7d12caa8b.png',
-                description: 'Una Schiava di eccezionale freschezza, croccante e profumata. Il volto moderno del Trentino.',
-                grape: 'Schiava',
-                region: 'Trentino-Alto Adige',
-                pairing: 'Speck, canederli, formaggi freschi, carni bianche',
-                price: '€22',
-                rating: '★★★★★'
-            },
-            'fontenille': {
-                name: 'Alphonse 2022',
+                    badge: '🍷 Rosso',
+                        image: 'foto_vini/schiava-para-se-agricola-mos-202420251015172138_d7723339-8a92-41d7-a684-62a7d12caa8b.png',
+                            description: 'Una Schiava di eccezionale freschezza, croccante e profumata. Il volto moderno del Trentino.',
+                                grape: 'Schiava',
+                                    region: 'Trentino-Alto Adige',
+                                        pairing: 'Speck, canederli, formaggi freschi, carni bianche',
+                                            price: '€22',
+                                                rating: '★★★★★'
+        },
+        'fontenille': {
+            name: 'Alphonse 2022',
                 producer: 'Domaine de Fontenille • Provenza',
-                badge: '🥇 Selezione Internazionale',
-                image: 'foto_vini/alphonse_2022.png',
-                description: 'Un rosso provenzale di grande carattere, con note di mora e spezie dolci. Elegante e profondo.',
-                grape: 'Grenache, Syrah',
-                region: 'Luberon, Provenza (Francia)',
-                pairing: 'Agnello, stufati provenzali, formaggi stagionati',
-                price: '€42',
-                rating: '★★★★★'
-            },
-            'valdicava': {
-                name: 'Madonna del Piano Riserva 2019',
+                    badge: '🥇 Selezione Internazionale',
+                        image: 'foto_vini/alphonse_2022.png',
+                            description: 'Un rosso provenzale di grande carattere, con note di mora e spezie dolci. Elegante e profondo.',
+                                grape: 'Grenache, Syrah',
+                                    region: 'Luberon, Provenza (Francia)',
+                                        pairing: 'Agnello, stufati provenzali, formaggi stagionati',
+                                            price: '€42',
+                                                rating: '★★★★★'
+        },
+        'valdicava': {
+            name: 'Madonna del Piano Riserva 2019',
                 producer: 'Valdicava • Toscana',
-                badge: '💯 100/100 Ferraro',
-                image: 'foto_vini/valdicava_madonna_del_piano.png',
-                description: 'Brunello Riserva monumentale. Potenza, struttura e una capacità di invecchiamento infinita.',
-                grape: 'Sangiovese Grosso',
-                region: 'Montalcino, Toscana',
-                pairing: 'Cinghiale, bistecca fiorentina, pecorino stagionato',
-                price: '€280',
-                rating: '★★★★★'
-            },
-            'altemasi': {
-                name: 'Altemasi Graal Riserva 2018',
+                    badge: '💯 100/100 Ferraro',
+                        image: 'foto_vini/valdicava_madonna_del_piano.png',
+                            description: 'Brunello Riserva monumentale. Potenza, struttura e una capacità di invecchiamento infinita.',
+                                grape: 'Sangiovese Grosso',
+                                    region: 'Montalcino, Toscana',
+                                        pairing: 'Cinghiale, bistecca fiorentina, pecorino stagionato',
+                                            price: '€280',
+                                                rating: '★★★★★'
+        },
+        'altemasi': {
+            name: 'Altemasi Graal Riserva 2018',
                 producer: 'Cavit • Trentino',
-                badge: '🍇 5 Grappoli Bibenda',
-                image: 'foto_vini/altemasi_riserva_graal_2018.png',
-                description: "L'eccellenza del Metodo Classico di montagna. Cremoso, minerale ed elegante.",
-                grape: 'Chardonnay',
-                region: 'Trentino',
-                pairing: 'Pesce crudo, crostacei, risotti delicati',
-                price: '€45',
-                rating: '★★★★★'
-            },
-            'montevertine': {
-                name: 'Le Pergole Torte 2022',
+                    badge: '🍇 5 Grappoli Bibenda',
+                        image: 'foto_vini/altemasi_riserva_graal_2018.png',
+                            description: "L'eccellenza del Metodo Classico di montagna. Cremoso, minerale ed elegante.",
+                                grape: 'Chardonnay',
+                                    region: 'Trentino',
+                                        pairing: 'Pesce crudo, crostacei, risotti delicati',
+                                            price: '€45',
+                                                rating: '★★★★★'
+        },
+        'montevertine': {
+            name: 'Le Pergole Torte 2022',
                 producer: 'Montevertine • Toscana',
-                badge: '🏆 Tre Bicchieri 2026',
-                image: 'foto_vini/montevertine_2022.png',
-                description: 'Il Sangiovese in purezza che sfida le convenzioni. Un\'icona di stile e tradizione toscana.',
-                grape: 'Sangiovese',
-                region: 'Radda in Chianti, Toscana',
-                pairing: 'Pappardelle al cinghiale, arrosti, formaggi toscani',
-                price: '€90',
-                rating: '★★★★★'
-            },
-            'ippolito': {
-                name: 'Ripe del Falco Riserva 2017',
+                    badge: '🏆 Tre Bicchieri 2026',
+                        image: 'foto_vini/montevertine_2022.png',
+                            description: 'Il Sangiovese in purezza che sfida le convenzioni. Un\'icona di stile e tradizione toscana.',
+                                grape: 'Sangiovese',
+                                    region: 'Radda in Chianti, Toscana',
+                                        pairing: 'Pappardelle al cinghiale, arrosti, formaggi toscani',
+                                            price: '€90',
+                                                rating: '★★★★★'
+        },
+        'ippolito': {
+            name: 'Ripe del Falco Riserva 2017',
                 producer: 'Ippolito 1845 • Calabria',
-                badge: '🍇 5 Grappoli 2025',
-                image: 'foto_vini/ripe_del_falco_2017.png',
-                description: "L'eccellenza del Sud. Un Gaglioppo Riserva di straordinaria complessità, premiato per la sua eleganza.",
-                grape: 'Gaglioppo',
-                region: 'Cirò, Calabria',
-                pairing: "'Nduja, capretto, peperoncini ripieni, caciocavallo",
-                price: '€40',
-                rating: '★★★★★'
-            },
-            'altesino': {
-                name: 'Brunello Montosoli 2020',
+                    badge: '🍇 5 Grappoli 2025',
+                        image: 'foto_vini/ripe_del_falco_2017.png',
+                            description: "L'eccellenza del Sud. Un Gaglioppo Riserva di straordinaria complessità, premiato per la sua eleganza.",
+                                grape: 'Gaglioppo',
+                                    region: 'Cirò, Calabria',
+                                        pairing: "'Nduja, capretto, peperoncini ripieni, caciocavallo",
+                                            price: '€40',
+                                                rating: '★★★★★'
+        },
+        'altesino': {
+            name: 'Brunello Montosoli 2020',
                 producer: 'Altesino • Toscana',
-                badge: '🏆 Tre Bicchieri 2026',
-                image: 'foto_vini/altesino_montosoli_2020.png',
-                description: 'Uno dei Cru più celebri di Montalcino. Un Brunello austero, profondo e di classe mondiale.',
-                grape: 'Sangiovese Grosso',
-                region: 'Montalcino, Toscana',
-                pairing: 'Selvaggina, tartufo, brasati, pecorino di Pienza',
-                price: '€95',
-                rating: '★★★★★'
-            },
-            'giodo': {
-                name: 'Brunello di Montalcino 2020',
+                    badge: '🏆 Tre Bicchieri 2026',
+                        image: 'foto_vini/altesino_montosoli_2020.png',
+                            description: 'Uno dei Cru più celebri di Montalcino. Un Brunello austero, profondo e di classe mondiale.',
+                                grape: 'Sangiovese Grosso',
+                                    region: 'Montalcino, Toscana',
+                                        pairing: 'Selvaggina, tartufo, brasati, pecorino di Pienza',
+                                            price: '€95',
+                                                rating: '★★★★★'
+        },
+        'giodo': {
+            name: 'Brunello di Montalcino 2020',
                 producer: 'Giodo • Toscana',
-                badge: '🍷 Rosso dell\'Anno',
-                image: 'foto_vini/giodo_brunello_2020.png',
-                description: 'Eleganza e purezza. Un Brunello che cattura l\'essenza del territorio con straordinaria finezza.',
-                grape: 'Sangiovese Grosso',
-                region: 'Montalcino, Toscana',
-                pairing: 'Bistecca, pici al ragù, pecorino',
-                price: '€85',
-                rating: '★★★★★'
-            },
-            'bosio': {
-                name: 'Franciacorta Brut Nature 2021',
+                    badge: '🍷 Rosso dell\'Anno',
+                        image: 'foto_vini/giodo_brunello_2020.png',
+                            description: 'Eleganza e purezza. Un Brunello che cattura l\'essenza del territorio con straordinaria finezza.',
+                                grape: 'Sangiovese Grosso',
+                                    region: 'Montalcino, Toscana',
+                                        pairing: 'Bistecca, pici al ragù, pecorino',
+                                            price: '€85',
+                                                rating: '★★★★★'
+        },
+        'bosio': {
+            name: 'Franciacorta Brut Nature 2021',
                 producer: 'Bosio • Lombardia',
-                badge: '🥂 Bollicine dell\'Anno',
-                image: 'foto_vini/bosio_franciacorta_nature.png',
-                description: 'Purezza assoluta senza dosaggio. Finezza e verticalità da vigneti d\'altura.',
-                grape: 'Chardonnay, Pinot Nero',
-                region: 'Franciacorta, Lombardia',
-                pairing: 'Ostriche, sushi, tartare di pesce',
-                price: '€35',
-                rating: '★★★★★'
-            },
-            'baldovino': {
-                name: 'Cerasuolo d\'Abruzzo Baldovino 2024',
+                    badge: '🥂 Bollicine dell\'Anno',
+                        image: 'foto_vini/bosio_franciacorta_nature.png',
+                            description: 'Purezza assoluta senza dosaggio. Finezza e verticalità da vigneti d\'altura.',
+                                grape: 'Chardonnay, Pinot Nero',
+                                    region: 'Franciacorta, Lombardia',
+                                        pairing: 'Ostriche, sushi, tartare di pesce',
+                                            price: '€35',
+                                                rating: '★★★★★'
+        },
+        'baldovino': {
+            name: 'Cerasuolo d\'Abruzzo Baldovino 2024',
                 producer: 'Tenuta I Fauri • Abruzzo',
-                badge: '🌹 Rosato dell\'Anno',
-                image: 'foto_vini/baldovino_2024_tenuta_i_fauri.png',
-                description: 'Il rosato italiano per eccellenza. Fresco, sapido e incredibilmente bevibile.',
-                grape: 'Montepulciano',
-                region: 'Abruzzo',
-                pairing: 'Antipasti di mare, pizza, grigliate estive',
-                price: '€15',
-                rating: '★★★★★'
-            }
+                    badge: '🌹 Rosato dell\'Anno',
+                        image: 'foto_vini/baldovino_2024_tenuta_i_fauri.png',
+                            description: 'Il rosato italiano per eccellenza. Fresco, sapido e incredibilmente bevibile.',
+                                grape: 'Montepulciano',
+                                    region: 'Abruzzo',
+                                        pairing: 'Antipasti di mare, pizza, grigliate estive',
+                                            price: '€15',
+                                                rating: '★★★★★'
+        }
         };
 
         // Modal Elements
@@ -6136,7 +6432,7 @@
     <!-- UX/UI Enhancement Scripts -->
     <script>
         // ==========================================
-        // SCROLL PROGRESS BAR
+        CROBAR
         // ==========================================
         const scrollProgress = document.getElementById('scroll-progress');
 
@@ -6253,6 +6549,45 @@
                 el.classList.add('visible');
             });
         }
+
+        // ==========================================
+        // REGION FILTERS
+        // ==========================================
+        const regionFilterBtns = document.querySelectorAll('.region-filter-btn');
+        const wineCards = document.querySelectorAll('#catalog .rounded-\\[2rem\\]');
+
+        regionFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                regionFilterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-primary', 'text-white', 'shadow-lg');
+                    // Reset to default style
+                    if (!b.classList.contains('bg-blue-50')) {
+                        b.classList.add('bg-gray-100', 'text-gray-700');
+                    }
+                });
+
+                btn.classList.add('active', 'bg-primary', 'text-white', 'shadow-lg');
+                btn.classList.remove('bg-gray-100', 'text-gray-700', 'bg-blue-50', 'text-blue-700');
+
+                const selectedRegion = btn.dataset.region.toLowerCase();
+
+                // Filter cards
+                wineCards.forEach(card => {
+                    const cardText = card.textContent.toLowerCase();
+
+                    if (selectedRegion === 'all') {
+                        card.style.display = '';
+                        card.style.opacity = '1';
+                    } else if (cardText.includes(selectedRegion)) {
+                        card.style.display = '';
+                        card.style.opacity = '1';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
 
         console.log('✨ UX/UI Overhaul 2026 loaded successfully!');
     </script>
