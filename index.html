@@ -447,6 +447,12 @@
     .glow-pulse {
         animation: gold-pulse 3s ease-in-out infinite;
     }
+
+    /* === PERFORMANCE OPTIMIZATIONS === */
+    .lazy-section {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 1000px;
+    }
     </style>
 
 <body class="bg-secondary font-sans text-gray-100 overflow-x-hidden">
@@ -455,7 +461,7 @@
     <div id="scroll-progress" role="progressbar" style="background:var(--gold);height:3px" aria-label="Progresso lettura pagina"></div>
 
     <!-- Skip Navigation Link for Accessibility -->
-    <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-gold focus:text-secondary focus:rounded-md focus:font-bold focus:shadow-lg">Salta al contenuto principale</a>
 
     <!-- Image Lightbox (Accessible Modal) -->
     <div id="imageLightbox" role="dialog" aria-modal="true" aria-label="Visualizzatore immagine">
@@ -562,7 +568,7 @@
                 </button>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden text-gray-800 focus:outline-none p-2"
+                <button id="mobile-menu-btn" class="lg:hidden text-light hover:text-gold focus:outline-none p-2"
                     aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-menu-drawer">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -590,17 +596,16 @@
             </button>
         </div>
         <div class="p-6 flex flex-col space-y-4 font-medium text-lg">
-            <a href="#hero" class="mobile-link text-gray-800 hover:text-gold">Home</a>
-            <a href="#catalog" class="mobile-link text-gray-800 hover:text-gold">I Campioni</a>
-            <a href="#smart-buy" class="mobile-link text-gray-800 hover:text-gold">Smart Buy</a>
-            <a href="#tasting-course" class="mobile-link text-gray-800 hover:text-gold font-bold">Corso Completo (7
-                Lezioni)</a>
+            <a href="#hero" class="mobile-link text-gray-300 hover:text-gold">Home</a>
+            <a href="#catalog" class="mobile-link text-gray-300 hover:text-gold">I Campioni</a>
+            <a href="#smart-buy" class="mobile-link text-gray-300 hover:text-gold">Smart Buy</a>
+            <a href="#tasting-course" class="mobile-link text-gray-300 hover:text-gold font-bold">Corso Completo (7 Lezioni)</a>
             <div class="border-t border-gold/20 my-2"></div>
             <span class="text-xs text-gray-400 uppercase tracking-wider font-bold">Articoli</span>
-            <a href="#outsiders" class="mobile-link text-gray-800 hover:text-gold">🍇 I 17 Outsider</a>
-            <a href="#ecommerce-2025" class="mobile-link text-gray-800 hover:text-gold">🛒 E-commerce 2025</a>
-            <a href="#glossary" class="mobile-link text-gray-800 hover:text-gold">📖 Glossario & Prezzi</a>
-            <a href="#guide" class="mobile-link text-gray-800 hover:text-gold">📋 Guida Acquisto</a>
+            <a href="#outsiders" class="mobile-link text-gray-300 hover:text-gold">🍇 I 17 Outsider</a>
+            <a href="#ecommerce-2025" class="mobile-link text-gray-300 hover:text-gold">🛒 E-commerce 2025</a>
+            <a href="#glossary" class="mobile-link text-gray-300 hover:text-gold">📖 Glossario & Prezzi</a>
+            <a href="#guide" class="mobile-link text-gray-300 hover:text-gold">📋 Guida Acquisto</a>
         </div>
     </div>
 
@@ -737,7 +742,7 @@
                     <div class="flex flex-wrap items-center justify-center gap-3 mb-6">
                         <!-- Show All Button -->
                         <button
-                            class="region-filter-btn active px-4 py-2 rounded-full text-sm font-bold transition-all bg-gold text-light shadow-gold"
+                            class="region-filter-btn active px-4 py-2 rounded-full text-sm font-bold transition-all bg-gold text-secondary shadow-gold border border-gold"
                             data-region="all">
                             🌍 Tutti
                         </button>
@@ -753,34 +758,34 @@
                             </div>
                             <div class="flex flex-wrap gap-2 justify-center max-w-md">
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="toscana">Toscana</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="piemonte">Piemonte</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="lombardia">Lombardia</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="veneto">Veneto</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="abruzzo">Abruzzo</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="sicilia">Sicilia</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="puglia">Puglia</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="calabria">Calabria</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="trentino">Trentino</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-700 hover:bg-primary hover:text-white border border-gray-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="emilia">Emilia Romagna</button>
                             </div>
                         </div>
@@ -793,13 +798,13 @@
                             </div>
                             <div class="flex flex-wrap gap-2 justify-center">
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="provenza">Provenza</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="champagne">Champagne</button>
                                 <button
-                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200"
+                                    class="region-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-dark-surface text-gray-300 hover:bg-gold/10 hover:text-gold hover:border-gold/40 border border-gold/20"
                                     data-region="bordeaux">Bordeaux</button>
                             </div>
                         </div>
@@ -819,9 +824,9 @@
                                 🍷 Rosso
                             </div>
                             <img src="foto_vini/giodo_brunello_2020.png" alt="Brunello Giodo 2020"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-primary/20 text-primary text-xs font-bold px-3 py-1.5 rounded-full border border-primary/30 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-red-950/40 text-red-400 text-xs font-bold px-3 py-1.5 rounded-full border border-red-900/50 flex items-center gap-1">
                                 🏆 Rosso dell'Anno
                             </div>
                         </div>
@@ -855,9 +860,9 @@
                                 🥂 Bollicine
                             </div>
                             <img src="foto_vini/bosio_franciacorta_nature.png" alt="Franciacorta Bosio"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-yellow-50 text-yellow-700 text-xs font-bold px-3 py-1.5 rounded-full border border-yellow-100 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-amber-950/40 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-full border border-amber-900/50 flex items-center gap-1">
                                 ✨ Bollicine dell'Anno
                             </div>
                         </div>
@@ -892,9 +897,9 @@
                                 🌸 Rosato
                             </div>
                             <img src="foto_vini/baldovino_2024_tenuta_i_fauri.png" alt="Cerasuolo Baldovino 2024"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-pink-50 text-pink-600 text-xs font-bold px-3 py-1.5 rounded-full border border-pink-100 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-rose-950/40 text-rose-400 text-xs font-bold px-3 py-1.5 rounded-full border border-rose-900/50 flex items-center gap-1">
                                 🌷 Rosato dell'Anno
                             </div>
                         </div>
@@ -928,9 +933,9 @@
                                 🍊 Orange
                             </div>
                             <img src="foto_vini/abbazia_san_giorgio.jpg" alt="Abbazia San Giorgio"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-purple-50 text-purple-600 text-xs font-bold px-3 py-1.5 rounded-full border border-purple-100 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-purple-950/40 text-purple-400 text-xs font-bold px-3 py-1.5 rounded-full border border-purple-900/50 flex items-center gap-1">
                                 🏅 Selezione Esclusiva
                             </div>
                         </div>
@@ -964,9 +969,9 @@
                                 🥂 Spumante
                             </div>
                             <img src="foto_vini/sampagnino-bianco-bulli.png" alt="Bulli Sampagnino"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-orange-50 text-orange-600 text-xs font-bold px-3 py-1.5 rounded-full border border-orange-100 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-orange-950/40 text-orange-400 text-xs font-bold px-3 py-1.5 rounded-full border border-orange-900/50 flex items-center gap-1">
                                 🥇 Selezione Esclusiva
                             </div>
                         </div>
@@ -1000,9 +1005,9 @@
                             </div>
                             <img src="foto_vini/schiava-para-se-agricola-mos-202420251015172138_d7723339-8a92-41d7-a684-62a7d12caa8b.png"
                                 alt="Agricola Mos Schiava"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1.5 rounded-full border border-blue-100 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-blue-950/40 text-blue-400 text-xs font-bold px-3 py-1.5 rounded-full border border-blue-900/50 flex items-center gap-1">
                                 🥇 Selezione Esclusiva
                             </div>
                         </div>
@@ -1035,9 +1040,9 @@
                                 🍷 Rosso
                             </div>
                             <img src="foto_vini/alphonse_2022.png" alt="Alphonse 2022"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-full border border-gray-800 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-emerald-950/40 text-emerald-400 text-xs font-bold px-3 py-1.5 rounded-full border border-emerald-900/50 flex items-center gap-1">
                                 🥇 Selezione Esclusiva
                             </div>
                         </div>
@@ -1072,9 +1077,9 @@
                                 🍷 Rosso
                             </div>
                             <img src="foto_vini/valdicava_madonna_del_piano.png" alt="Valdicava Madonna del Piano"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-full border border-gray-800 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-amber-950/40 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-full border border-amber-900/50 flex items-center gap-1">
                                 💯 100/100 Ferraro
                             </div>
                         </div>
@@ -1109,9 +1114,9 @@
                                 🥂 Bollicine
                             </div>
                             <img src="foto_vini/altemasi_riserva_graal_2018.png" alt="Altemasi Riserva Graal 2018"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1.5 rounded-full border border-blue-100 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-blue-950/40 text-blue-400 text-xs font-bold px-3 py-1.5 rounded-full border border-blue-900/50 flex items-center gap-1">
                                 🍇 5 Grappoli
                             </div>
                         </div>
@@ -1145,9 +1150,9 @@
                                 🍷 Rosso
                             </div>
                             <img src="foto_vini/montevertine_2022.png" alt="Le Pergole Torte 2022"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-red-50 text-red-600 text-xs font-bold px-3 py-1.5 rounded-full border border-red-100 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-red-950/40 text-red-400 text-xs font-bold px-3 py-1.5 rounded-full border border-red-900/50 flex items-center gap-1">
                                 🏆 Tre Bicchieri '26
                             </div>
                         </div>
@@ -1181,9 +1186,9 @@
                                 🍷 Rosso
                             </div>
                             <img src="foto_vini/ripe_del_falco_2017.png" alt="Ripe del Falco"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1.5 rounded-full border border-blue-100 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-blue-950/40 text-blue-400 text-xs font-bold px-3 py-1.5 rounded-full border border-blue-900/50 flex items-center gap-1">
                                 🍇 5 Grappoli '25
                             </div>
                         </div>
@@ -1218,9 +1223,9 @@
                                 🍷 Rosso
                             </div>
                             <img src="foto_vini/altesino_montosoli_2020.png" alt="Brunello Montosoli"
-                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500">
+                                class="h-56 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             <div
-                                class="absolute bottom-4 right-4 bg-red-50 text-red-600 text-xs font-bold px-3 py-1.5 rounded-full border border-red-100 flex items-center gap-1">
+                                class="absolute bottom-4 right-4 bg-red-950/40 text-red-400 text-xs font-bold px-3 py-1.5 rounded-full border border-red-900/50 flex items-center gap-1">
                                 🏆 Tre Bicchieri '26
                             </div>
                         </div>
@@ -1583,10 +1588,9 @@
                             Non fidarti solo della sigla DOC. La vera garanzia è la scritta in piccolo:
                             <strong class="text-light">"Imbottigliato all'origine da..."</strong>.
                         </p>
-                        <div class="bg-red-50 p-4 rounded-xl border border-red-100">
-                            <p class="text-sm text-red-700">
-                                <strong>✘ Da Evitare:</strong> "Imbottigliato da I.C.Q.R.F..." (vino sfuso
-                                industriale).
+                        <div class="bg-red-950/20 p-4 rounded-xl border border-red-900/30">
+                            <p class="text-sm text-red-400">
+                                <strong>✘ Da Evitare:</strong> "Imbottigliato da I.C.Q.R.F..." (vino sfuso industriale).
                             </p>
                         </div>
                     </div>
@@ -1612,11 +1616,9 @@
                             per il
                             vino.
                         </p>
-                        <div class="bg-green-50 p-4 rounded-xl border border-green-100">
-                            <p class="text-sm text-green-700">
-                                <strong>✔ Sweet Spot (€7 - €15):</strong> Il punto perfetto dove paghi la qualità,
-                                non il
-                                marketing di lusso.
+                        <div class="bg-green-950/20 p-4 rounded-xl border border-green-900/30">
+                            <p class="text-sm text-green-400">
+                                <strong>✔ Sweet Spot (€7 - €15):</strong> Il punto perfetto dove paghi la qualità, non il marketing di lusso.
                             </p>
                         </div>
                     </div>
@@ -1642,11 +1644,9 @@
                             ("Gusto di
                             Luce").
                         </p>
-                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
-                            <p class="text-sm text-blue-700">
-                                <strong>✔ Il Trucco:</strong> Prendi sempre la bottiglia dalla <strong>seconda o
-                                    terza
-                                    fila</strong>.
+                        <div class="bg-blue-950/20 p-4 rounded-xl border border-blue-900/30">
+                            <p class="text-sm text-blue-400">
+                                <strong>✔ Il Trucco:</strong> Prendi sempre la bottiglia dalla <strong>seconda o terza fila</strong>.
                             </p>
                         </div>
                     </div>
@@ -1671,10 +1671,9 @@
                             è
                             probabilmente ossidato.
                         </p>
-                        <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100">
-                            <p class="text-sm text-yellow-700">
-                                <strong>✔ La Regola:</strong> Cerca sempre l'annata corrente (es. nel 2026, cerca
-                                2025/2026).
+                        <div class="bg-amber-950/20 p-4 rounded-xl border border-amber-900/30">
+                            <p class="text-sm text-amber-400">
+                                <strong>✔ La Regola:</strong> Cerca sempre l'annata corrente (es. nel 2026, cerca 2025/2026).
                             </p>
                         </div>
                     </div>
@@ -1868,11 +1867,8 @@
                             personale, l'analisi
                             sensoriale serve a stabilire tecnicamente se un vino è di qualità.
                         </p>
-                        <p class="font-medium text-primary bg-primary/5 p-4 rounded-xl border border-primary/10">
-                            In questa guida esploreremo nel dettaglio le prime due fasi, fondamentali per preparare
-                            il
-                            cervello
-                            e il palato all'assaggio vero e proprio.
+                        <p class="font-medium text-gold bg-primary/10 p-4 rounded-xl border border-gold/20">
+                            In questa guida esploreremo nel dettaglio le prime due fasi, fondamentali per preparare il cervello e il palato all'assaggio vero e proprio.
                         </p>
                     </div>
 
@@ -2676,23 +2672,16 @@
                         </div>
 
                         <!-- Marsalizzazione Alert -->
-                        <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-2xl mb-8">
-                            <h4 class="font-bold text-red-900 mb-3 flex items-center">
+                        <div class="bg-red-950/20 border-l-4 border-red-500 p-6 rounded-r-2xl mb-8 border-y border-r border-red-900/30">
+                            <h4 class="font-bold text-red-400 mb-3 flex items-center">
                                 <span class="text-2xl mr-2">⚠️</span>
                                 Il Grande Equivoco del Novecento: La "Marsalizzazione"
                             </h4>
-                            <p class="text-red-800 text-sm leading-relaxed mb-3">
-                                Purtroppo, questi vini nobili sono stati a lungo incompresi e svalutati. Nel corso
-                                del
-                                Novecento, scelte commerciali scellerate hanno invaso il mercato con prodotti di
-                                bassissima
-                                qualità che sfruttavano nomi prestigiosi, rovinando la reputazione della categoria.
+                            <p class="text-red-300 text-sm leading-relaxed mb-3">
+                                Purtroppo, questi vini nobili sono stati a lungo incompresi e svalutati. Nel corso del Novecento, scelte commerciali scellerate hanno invaso il mercato con prodotti di bassissima qualità che sfruttavano nomi prestigiosi, rovinando la reputazione della categoria.
                             </p>
-                            <p class="text-red-800 text-sm leading-relaxed mb-3">
-                                Un esempio linguistico lampante è l'uso negativo del termine
-                                <strong>"Marsalato"</strong>.
-                                Oggi si usa comunemente per dire che un vino bianco è ossidato, vecchio e difettoso,
-                                associando ingiustamente il nome del Marsala a un difetto.
+                            <p class="text-red-300 text-sm leading-relaxed mb-3">
+                                Un esempio linguistico lampante è l'uso negativo del termine <strong>"Marsalato"</strong>. Oggi si usa comunemente per dire che un vino bianco è ossidato, vecchio e difettoso, associando ingiustamente il nome del Marsala a un difetto.
                             </p>
                             <p class="text-red-800 text-sm leading-relaxed">
                                 Tecnicamente sarebbe più corretto dire "Maderizzato" (riferendosi allo stile
@@ -2774,9 +2763,8 @@
                                     come
                                     "medicina" venduta in farmacia per curare malanni come la gotta.
                                 </p>
-                                <div class="bg-amber-50 p-3 rounded-xl text-xs text-amber-900 border border-amber-100">
-                                    <strong>🍫 Abbinamento perfetto:</strong> Cioccolato fondente di alta qualità
-                                    (esperienza "orgasmica")
+                                <div class="bg-amber-950/20 p-3 rounded-xl text-xs text-amber-400 border border-amber-900/30">
+                                    <strong>🍫 Abbinamento perfetto:</strong> Cioccolato fondente di alta qualità (esperienza "orgasmica")
                                 </div>
                             </div>
 
@@ -2787,27 +2775,17 @@
                                 <h4 class="font-bold text-xl text-light mb-2">Retsina</h4>
                                 <p class="text-xs text-purple-600 mb-3 font-semibold">Grecia Antica</p>
                                 <p class="text-sm text-gray-400 mb-4 leading-relaxed">
-                                    Un vino bianco aromatizzato con <strong>resina di pino d'Aleppo</strong>. Ha
-                                    origini
-                                    antiche, ma dagli anni '80 è stato relegato al ruolo di vino turistico da
-                                    souvenir di
-                                    bassa qualità.
+                                    Un vino bianco aromatizzato con <strong>resina di pino d'Aleppo</strong>. Ha origini antiche, ma dagli anni '80 è stato relegato al ruolo di vino turistico da souvenir di bassa qualità.
                                 </p>
-                                <div class="bg-green-50 p-3 rounded-xl text-xs text-green-800 border border-green-100">
-                                    <strong>Oggi:</strong> Pochissimi produttori realizzano versioni autentiche con
-                                    tipiche
-                                    note balsamiche
+                                <div class="bg-green-950/20 p-3 rounded-xl text-xs text-green-400 border border-green-900/30">
+                                    <strong>Oggi:</strong> Pochissimi produttori realizzano versioni autentiche con tipiche note balsamiche
                                 </div>
                             </div>
                         </div>
 
-                        <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                            <p class="text-blue-900 text-sm leading-relaxed">
-                                <strong>📜 Curiosità storica:</strong> Il Barolo Chinato è stato riscoperto negli
-                                ultimi 25
-                                anni come uno dei migliori vini da meditazione al mondo, dopo essere stato quasi
-                                dimenticato
-                                come "medicina da farmacia".
+                        <div class="bg-blue-950/20 p-6 rounded-2xl border border-blue-900/30">
+                            <p class="text-blue-300 text-sm leading-relaxed">
+                                <strong>📜 Curiosità storica:</strong> Il Barolo Chinato è stato riscoperto negli ultimi 25 anni come uno dei migliori vini da meditazione al mondo, dopo essere stato quasi dimenticato come "medicina da farmacia".
                             </p>
                         </div>
                     </div>
@@ -3004,11 +2982,8 @@
                             superano
                             anche i 10 euro e che pretendono di essere vini di qualità.
                         </p>
-                        <p class="bg-red-50 p-4 rounded-xl border border-red-100 text-red-800">
-                            <strong>Definizione:</strong> Un vino è "aggiustato" o "taroccato" quando le pratiche di
-                            cantina
-                            diventano così invasive da stravolgere le caratteristiche naturali dell'uva, spesso per
-                            mascherare una materia prima di partenza scadente.
+                        <p class="bg-red-950/20 p-4 rounded-xl border border-red-900/30 text-red-300">
+                            <strong>Definizione:</strong> Un vino è "aggiustato" o "taroccato" quando le pratiche di cantina diventano così invasive da stravolgere le caratteristiche naturali dell'uva, spesso per mascherare una materia prima di partenza scadente.
                         </p>
                     </div>
 
@@ -3212,33 +3187,29 @@
                             <div class="bg-dark-lighter p-8 rounded-[2.5rem] shadow-sm border border-gold/20">
                                 <h4 class="font-bold text-light text-xl mb-6 flex items-center">
                                     <span
-                                        class="bg-green-100 text-green-700 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">✓</span>
+                                        class="bg-green-900/30 text-green-400 border border-green-900/50 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">✓</span>
                                     Le Sorprese "Morbide" (8/10)
                                 </h4>
                                 <ul class="space-y-4">
-                                    <li class="flex items-start pb-4 border-b border-gray-50 last:border-0 last:pb-0">
-                                        <span class="font-bold text-gray-800 w-24 shrink-0">€ 10,49</span>
+                                    <li class="flex items-start pb-4 border-b border-gold/10 last:border-0 last:pb-0">
+                                        <span class="font-bold text-gold w-24 shrink-0 text-sm">€ 10,49</span>
                                         <div>
                                             <p class="font-bold text-light">Schioppettino (Friuli)</p>
-                                            <p class="text-xs text-gray-400">Colli di Poianis - Morbido, corretto,
-                                                riscoperta di un autoctono.</p>
+                                            <p class="text-xs text-gray-400">Colli di Poianis - Morbido, corretto, riscoperta di un autoctono.</p>
                                         </div>
                                     </li>
-                                    <li class="flex items-start pb-4 border-b border-gray-50 last:border-0 last:pb-0">
-                                        <span class="font-bold text-gray-800 w-24 shrink-0">€ 7,50</span>
+                                    <li class="flex items-start pb-4 border-b border-gold/10 last:border-0 last:pb-0">
+                                        <span class="font-bold text-gold w-24 shrink-0 text-sm">€ 7,50</span>
                                         <div>
                                             <p class="font-bold text-light">Pepe Rosso (Calabria)</p>
-                                            <p class="text-xs text-gray-400">Spadafora - Blend Magliocco/Merlot.
-                                                Elegante.</p>
+                                            <p class="text-xs text-gray-400">Spadafora - Blend Magliocco/Merlot. Elegante.</p>
                                         </div>
                                     </li>
-                                    <li class="flex items-start pb-4 border-b border-gray-50 last:border-0 last:pb-0">
-                                        <span class="font-bold text-gray-800 w-24 shrink-0">€ 8,90</span>
+                                    <li class="flex items-start pb-4 border-b border-gold/10 last:border-0 last:pb-0">
+                                        <span class="font-bold text-gold w-24 shrink-0 text-sm">€ 8,90</span>
                                         <div>
                                             <p class="font-bold text-light">Rimini DOC "Noi"</p>
-                                            <p class="text-xs text-gray-400">San Patrignano - Frutti di bosco e
-                                                fumo.
-                                                Persistente.</p>
+                                            <p class="text-xs text-gray-400">San Patrignano - Frutti di bosco e fumo. Persistente.</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -3248,22 +3219,17 @@
                             <div class="bg-dark-lighter p-8 rounded-[2.5rem] shadow-sm border border-gold/20">
                                 <h4 class="font-bold text-light text-xl mb-6 flex items-center">
                                     <span
-                                        class="bg-red-100 text-red-700 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">✕</span>
+                                        class="bg-red-900/30 text-red-400 border border-red-900/50 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">✕</span>
                                     La Trappola dei Nobili (4/10)
                                 </h4>
-                                <div class="bg-red-50 rounded-2xl p-6 border border-red-100">
+                                <div class="bg-red-950/20 rounded-2xl p-6 border border-red-900/30">
                                     <div class="flex justify-between items-start mb-2">
-                                        <h5 class="font-bold text-red-900">Nobile di Montepulciano DOCG</h5>
-                                        <span class="bg-dark-lighter text-red-700 text-xs font-bold px-2 py-1 rounded">€
-                                            10,99</span>
+                                        <h5 class="font-bold text-red-400">Nobile di Montepulciano DOCG</h5>
+                                        <span class="bg-dark-lighter text-red-400 text-xs font-bold px-2 py-1 rounded border border-red-900/30">€ 10,99</span>
                                     </div>
-                                    <p class="text-sm text-red-800 mb-4">Poggio Caro</p>
-                                    <p class="text-xs text-red-600 leading-relaxed italic">
-                                        "Tannino aggressivo, vino scomposto. <strong>Lezione:</strong> I grandi vini
-                                        da
-                                        invecchiamento non possono costare poco. Meglio un Aglianico base ottimo che
-                                        un
-                                        Nobile scarso."
+                                    <p class="text-sm text-red-300 mb-4">Poggio Caro</p>
+                                    <p class="text-xs text-red-300/80 leading-relaxed italic">
+                                        "Tannino aggressivo, vino scomposto. <strong>Lezione:</strong> I grandi vini da invecchiamento non possono costare poco. Meglio un Aglianico base ottimo che un Nobile scarso."
                                     </p>
                                 </div>
                             </div>
@@ -5306,7 +5272,7 @@
                     class="inline-block w-full max-w-4xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-dark-lighter shadow-2xl rounded-[2.5rem] relative">
 
                     <!-- Close Button -->
-                    <button onclick="closeWineModal()"
+                    <button id="modalCloseBtn" onclick="closeWineModal()" aria-label="Chiudi"
                         class="absolute top-6 right-6 p-2 rounded-full bg-secondary text-gray-400 hover:text-gold hover:bg-primary/5 transition-all z-10">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -5361,14 +5327,14 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-auto">
                                     <div class="bg-primary/5 p-5 rounded-2xl border border-primary/10">
                                         <h4
-                                            class="font-bold text-primary text-sm uppercase tracking-wide mb-3 flex items-center gap-2">
+                                            class="font-bold text-red-400 text-sm uppercase tracking-wide mb-3 flex items-center gap-2">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                             </svg>
                                             Esame Olfattivo
                                         </h4>
-                                        <p id="modalTasting" class="text-sm text-gray-700 leading-relaxed font-medium">
+                                        <p id="modalTasting" class="text-sm text-gray-300 leading-relaxed font-medium">
                                             Note
                                             degustative...</p>
                                     </div>
@@ -5382,7 +5348,7 @@
                                             </svg>
                                             Abbinamenti
                                         </h4>
-                                        <p id="modalPairing" class="text-sm text-gray-700 leading-relaxed font-medium">
+                                        <p id="modalPairing" class="text-sm text-gray-300 leading-relaxed font-medium">
                                             Abbinamenti consigliati...</p>
                                     </div>
                                 </div>
@@ -5397,17 +5363,18 @@
         <script>
             const winesData = {
                 'giodo': {
-                    oducer: 'Giodo',
+                    producer: 'Giodo',
                     name: 'Brunello di Montalcino 2020',
                     region: 'Toscana',
                     type: 'Rosso DOCG',
                     price: '€130',
+                    image: 'foto_vini/giodo_brunello_2020.png',
                     description: 'Eletto "Rosso dell\'Anno" Gambero Rosso 2026. Un Brunello di straordinaria eleganza che si distingue per la sua purezza. Ottenuto da uve Sangiovese in purezza, affina per 30 mesi in botti di rovere.',
                     tasting: 'Colore rubino brillante. Al naso esplode con note di fragolina di bosco, bergamotto, melograno e spezie dolci. Al palato è teso, vibrante, con tannini di setosa eleganza e un finale lunghissimo e sapido.',
                     pairing: 'Carni rosse importanti, arrosti, selvaggina da piuma e formaggi stagionati. Perfetto con una bistecca alla fiorentina.',
                     badges: [
-                        { text: '🍷 Rosso', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '🏆 Rosso dell\'Anno', color: 'bg-red-50 text-red-600' }
+                        { text: '🍷 Rosso', color: 'bg-dark-surface/90 text-light' },
+                        { text: '🏆 Rosso dell\'Anno', color: 'bg-red-950/40 text-red-400 border border-red-900/50' }
                     ]
                 },
                 'bosio': {
@@ -5416,12 +5383,13 @@
                     region: 'Lombardia',
                     type: 'Spumante Metodo Classico',
                     price: '€45',
-                    description: 'Le migliori bollicine italiano del 2026. Un Franciacorta "nudo", senza dosaggio zuccherino, che esprime la massima purezza del terroir della Franciacorta.',
+                    image: 'foto_vini/bosio_franciacorta_nature.png',
+                    description: 'Le migliori bollicine italiane del 2026. Un Franciacorta "nudo", senza dosaggio zuccherino, che esprime la massima purezza del terroir della Franciacorta.',
                     tasting: 'Paglierino tenue con perlage finissimo. Naso di fiori bianchi, lievito fresco, crosta di pane e agrumi (lime). In bocca è tagliente, verticale, gessoso e di grande freschezza.',
                     pairing: 'Ideale come aperitivo di classe. Perfetto con antipasti di pesce crudo, ostriche, crostacei o fritture di pesce delicate.',
                     badges: [
-                        { text: '🥂 Bollicine', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '✨ Bollicine dell\'Anno', color: 'bg-yellow-50 text-yellow-700' }
+                        { text: '🥂 Bollicine', color: 'bg-dark-surface/90 text-light' },
+                        { text: '✨ Bollicine dell\'Anno', color: 'bg-amber-950/40 text-amber-400 border border-amber-900/50' }
                     ]
                 },
                 'fauri': {
@@ -5430,82 +5398,88 @@
                     region: 'Abruzzo',
                     type: 'Rosato DOC',
                     price: '€18',
+                    image: 'foto_vini/baldovino_2024_tenuta_i_fauri.png',
                     description: 'Il miglior rosato d\'Italia 2026. Un Cerasuolo d\'Abruzzo verace, ottenuto da uve Montepulciano vinificate "in bianco", che unisce la struttura di un rosso alla freschezza di un bianco.',
                     tasting: 'Colore cerasuolo vivace e brillante. Profumi intensi di ciliegia fresca, melograno e fragola, con tocchi floreali. Al sorso è succoso, croccante, con una piacevole chiusura ammandorlata.',
                     pairing: 'Versatilissimo: salumi e affettati, pizza margherita, brodetto di pesce o carni bianche alla griglia.',
                     badges: [
-                        { text: '🌸 Rosato', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '🌷 Rosato dell\'Anno', color: 'bg-pink-50 text-pink-600' }
+                        { text: '🌸 Rosato', color: 'bg-dark-surface/90 text-light' },
+                        { text: '🌷 Rosato dell\'Anno', color: 'bg-rose-950/40 text-rose-400 border border-rose-900/50' }
                     ]
                 },
-                'sanleonardo': {
-                    producer: 'San Leonardo',
-                    name: 'San Leonardo 2020',
-                    region: 'Trentino',
+                'abbazia': {
+                    producer: 'Abbazia San Giorgio',
+                    name: 'Orange 2016',
+                    region: 'Sicilia',
+                    type: 'Orange Wine',
+                    price: '€35',
+                    image: 'foto_vini/abbazia_san_giorgio.jpg',
+                    description: 'Un vino orange ancestrale ottenuto da uve Zibibbo in purezza. Macerato sulle bucce, non filtrato né chiarificato, esprime aromi intensi e complessi di spezie e agrumi canditi.',
+                    tasting: 'Colore ambrato con riflessi dorati. Naso ricchissimo di scorza d\'arancia amara, albicocca disidratata, zenzero e origano selvatico. In bocca è fresco, sapido, leggermente tannico e persistente.',
+                    pairing: 'Piatti speziati, cucina asiatica, formaggi erborinati, bottarga o zuppe di pesce saporite.',
+                    badges: [
+                        { text: '🍊 Orange', color: 'bg-dark-surface/90 text-light' },
+                        { text: '🏅 Selezione Esclusiva', color: 'bg-purple-950/40 text-purple-400 border border-purple-900/50' }
+                    ]
+                },
+                'bulli': {
+                    producer: 'Bulli',
+                    name: 'Sampagnino Bianco',
+                    region: 'Emilia-Romagna',
+                    type: 'Spumante Frizzante',
+                    price: '€12',
+                    image: 'foto_vini/sampagnino-bianco-bulli.png',
+                    description: 'Un vino frizzante naturale, fresco e beverino. Ottenuto secondo metodi ancestrali con rifermentazione spontanea in bottiglia. Perfetto come aperitivo.',
+                    tasting: 'Colore giallo paglierino velato. Note fragranti di lieviti, mela verde e crosta di pane. Sorso agile, agrumato, con una bollicina briosa e rinfrescante.',
+                    pairing: 'Aperitivo, salumi piacentini, gnocco fritto, tigelle, formaggi freschi.',
+                    badges: [
+                        { text: '🥂 Spumante', color: 'bg-dark-surface/90 text-light' },
+                        { text: '🥇 Selezione Esclusiva', color: 'bg-orange-950/40 text-orange-400 border border-orange-900/50' }
+                    ]
+                },
+                'mos': {
+                    producer: 'Agricola Mos',
+                    name: 'Para-Se 2024',
+                    region: 'Trentino-Alto Adige',
                     type: 'Rosso IGT',
-                    price: '€95',
-                    description: 'Il celebrato "Sassicaia del Nord". Un taglio bordolese (Cabernet Sauvignon, Carmenère, Merlot) di classe mondiale, vinificato dai Marchesi Guerrieri Gonzaga.',
-                    tasting: 'Rubino profondo. Bouquet nobile di peperone verde (tipico del Carmenère), frutti di bosco, tabacco e cioccolato fondente. Sorso austero, elegante, avvolgente e di infinita persistenza.',
-                    pairing: 'Anatra all\'arancia, selvaggina da pelo, brasati, formaggi di malga stagionati o piatti al tartufo.',
+                    price: '€22',
+                    image: 'foto_vini/schiava-para-se-agricola-mos-202420251015172138_d7723339-8a92-41d7-a684-62a7d12caa8b.png',
+                    description: 'Una Schiava di eccezionale freschezza, croccante e profumata. Agricola Mos valorizza questo vitigno storico del Trentino con una vinificazione rispettosa e moderna.',
+                    tasting: 'Rosso rubino chiaro e trasparente. Profumi di piccoli frutti rossi (lampone, fragolina), mandorla e note speziate delicate. In bocca è fresco, sapido, beverino con tannini finissimi.',
+                    pairing: 'Speck tirolese, canederli, formaggi freschi, carni bianche, zuppe di pesce in rosso.',
                     badges: [
-                        { text: '🍷 Rosso', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '🏅 DoctorWine 2026', color: 'bg-purple-50 text-purple-600' }
+                        { text: '🍷 Rosso', color: 'bg-dark-surface/90 text-light' },
+                        { text: '🥇 Selezione Esclusiva', color: 'bg-blue-950/40 text-blue-400 border border-blue-900/50' }
                     ]
                 },
-                'barolo': {
-                    producer: 'Silvano Bolmida',
-                    name: 'Barolo Bussia 2021',
-                    region: 'Piemonte',
-                    type: 'Rosso DOCG',
-                    price: '€70',
-                    description: 'Miglior Vino Italiano Winemag 2026. Un Barolo tradizionale proveniente dal celebre cru Bussia a Monforte d\'Alba. Lunghe macerazioni per un vino di carattere.',
-                    tasting: 'Granato intenso. Spettro aromatico ampio: viola appassita, ciliegia sotto spirito, spezie orientali e goudron. Bocca potente, tannino fitto ma dolce, struttura imponente.',
-                    pairing: 'Filetto al pepe, risotto al tartufo bianco, ossobuco alla milanese o formaggi stravecchi.',
+                'fontenille': {
+                    producer: 'Domaine de Fontenille',
+                    name: 'Alphonse 2022',
+                    region: 'Luberon, Provenza (Francia)',
+                    type: 'Rosso AOP',
+                    price: '€42',
+                    image: 'foto_vini/alphonse_2022.png',
+                    description: 'Un rosso provenzale di grande carattere. Prodotto nel cuore del Luberon, unisce l\'eleganza del Syrah alla struttura del Grenache in una cuvée eccezionale.',
+                    tasting: 'Naso intenso di mora selvatica, mirtillo, spezie dolci (pepe nero, chiodo di garofano) e note di macchia mediterranea. Bocca ampia, vellutata, con tannini fitti ma levigati.',
+                    pairing: 'Carni rosse grigliate, stufati di agnello alle erbe di Provenza, formaggi stagionati.',
                     badges: [
-                        { text: '🍷 Rosso', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '🥇 Winemag 2026', color: 'bg-orange-50 text-orange-600' }
-                    ]
-                },
-                'braida': {
-                    producer: 'Braida',
-                    name: 'Bricco dell\'Uccellone 2022',
-                    region: 'Piemonte',
-                    type: 'Barbera d\'Asti DOCG',
-                    price: '€65',
-                    description: 'Il mito che ha rivoluzionato la Barbera. Giacomo Bologna ha dimostrato al mondo che questo vitigno popolare poteva produrre vini da grande invecchiamento ed eleganza.',
-                    tasting: 'Rosso rubino molto intenso con riflessi granati. Naso complesso di frutta rossa matura, vaniglia, liquirizia e menta. In bocca è morbido, ricco, voluminoso e con un finale speziato lunghissimo.',
-                    pairing: 'Grandi arrosti, carni in umido con salse ricche, selvaggina e formaggi stagionati piccanti.',
-                    badges: [
-                        { text: '🍇 Rosso', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '🍇 5 Grappoli', color: 'bg-blue-50 text-blue-600' }
-                    ]
-                },
-                'barbaresco': {
-                    producer: 'Bruno Giacosa',
-                    name: 'Barbaresco Asili 2021',
-                    region: 'Piemonte',
-                    type: 'Rosso DOCG',
-                    price: '€380',
-                    description: '100/100. Un monumento del Piemonte. Bruno Giacosa, il "Genio di Neive", firma questo Barbaresco proveniente dalla vigna Asili, rinomata per l\'eleganza.',
-                    tasting: 'Granato con riflessi aranciati. Eereo e raffinatissimo: rosa canina, lampone, tartufo, cannella e note minerali. Palato di classe assoluta, tannini di seta e persistenza infinita.',
-                    pairing: 'Agnello al forno, tajarin ai 40 tuorli con tartufo, piatti di alta cucina piemontese o semplicemente da meditazione.',
-                    badges: [
-                        { text: '🍷 Rosso', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '💯 100/100 Ferraro', color: 'bg-gray-900 text-white' }
+                        { text: '🍷 Rosso', color: 'bg-dark-surface/90 text-light' },
+                        { text: '🥇 Selezione Esclusiva', color: 'bg-emerald-950/40 text-emerald-400 border border-emerald-900/50' }
                     ]
                 },
                 'valdicava': {
                     producer: 'Valdicava',
                     name: 'Brunello Madonna del Piano 2019',
-                    region: 'Toscana',
+                    region: 'Montalcino, Toscana',
                     type: 'Rosso DOCG Riserva',
                     price: '€280',
+                    image: 'foto_vini/valdicava_madonna_del_piano.png',
                     description: 'Una Riserva leggendaria prodotta solo nelle grandi annate. Vino di potenza muscolare unita a una definizione aromatica chirurgica. Un investimento sicuro.',
-                    tasting: 'Granato scuro e concentrato. Naso scuro di amarena, cuoio nuovo, viola, grafite e spezie balsamiche. Bocca imponente, "palate-staining", con tannini fitti e maturi e un finale minerale.',
+                    tasting: 'Granato scuro e concentrato. Naso scuro di amarena, cuoio nuovo, viola, grafite e spezie balsamiche. Bocca imponente, con tannini fitti e maturi e un finale minerale.',
                     pairing: 'Bistecca alla Fiorentina di Chianina, cacciagione in salmì, formaggi a lunghissima stagionatura.',
                     badges: [
-                        { text: '🍷 Rosso', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '💯 100/100 Ferraro', color: 'bg-gray-900 text-white' }
+                        { text: '🍷 Rosso', color: 'bg-dark-surface/90 text-light' },
+                        { text: '💯 100/100 Ferraro', color: 'bg-amber-950/40 text-amber-400 border border-amber-900/50' }
                     ]
                 },
                 'altemasi': {
@@ -5514,54 +5488,58 @@
                     region: 'Trentino',
                     type: 'Trentodoc Riserva',
                     price: '€45',
+                    image: 'foto_vini/altemasi_riserva_graal_2018.png',
                     description: 'La massima espressione dello spumante di montagna. Un Metodo Classico Riserva (70% Chardonnay, 30% Pinot Nero) che sfida il tempo per complessità e longevità.',
-                    tasting: 'Paglierino oro con riflessi verdolini. Profumi evoluti di mela cotogna, pesca, frutta candita, miele e nocciola tostata. Al palato è austero, minerale, cremoso e di grande struttura.',
+                    tasting: 'Paglierino oro con riflessi verdolini. Profumi ed evoluzione di mela cotogna, pesca bianca, nocciola tostata e crosta di pane. Al palato è austero, minerale, cremoso e di grande struttura.',
                     pairing: 'Risotto ai frutti di mare, pesci importanti al forno, carni bianche nobili o crostacei.',
                     badges: [
-                        { text: '🥂 Bollicine', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '🍇 5 Grappoli', color: 'bg-blue-50 text-blue-600' }
+                        { text: '🥂 Bollicine', color: 'bg-dark-surface/90 text-light' },
+                        { text: '🍇 5 Grappoli', color: 'bg-blue-950/40 text-blue-400 border border-blue-900/50' }
                     ]
                 },
                 'montevertine': {
                     producer: 'Montevertine',
-                    name: 'Montevertine 2022',
-                    region: 'Toscana',
+                    name: 'Le Pergole Torte 2022',
+                    region: 'Radda in Chianti, Toscana',
                     type: 'Rosso IGT',
                     price: '€90',
+                    image: 'foto_vini/montevertine_2022.png',
                     description: 'L\'eleganza del Sangiovese di Radda in Chianti. Un vino "cult" che rifiuta la denominazione Chianti Classico per seguire la propria strada di eccellenza e tradizione.',
                     tasting: 'Rubino luminoso e trasparente. Naso incantevole di ciliegia fresca, arancia sanguinella, viola, erbe aromatiche e ruggine. Sorso teso, succoso, vibrante e di grandissima bevibilità ed eleganza.',
                     pairing: 'Pappardelle al ragù di lepre, arrosti di maiale, piccione o formaggi pecorini toscani.',
                     badges: [
-                        { text: '🍷 Rosso', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '🏆 Tre Bicchieri \'26', color: 'bg-red-50 text-red-600' }
+                        { text: '🍷 Rosso', color: 'bg-dark-surface/90 text-light' },
+                        { text: '🏆 Tre Bicchieri \'26', color: 'bg-red-950/40 text-red-400 border border-red-900/50' }
                     ]
                 },
                 'ippolito': {
                     producer: 'Ippolito 1845',
                     name: 'Ripe del Falco 2017',
-                    region: 'Calabria',
+                    region: 'Cirò, Calabria',
                     type: 'Cirò Rosso Riserva',
                     price: '€40',
+                    image: 'foto_vini/ripe_del_falco_2017.png',
                     description: 'Il Gaglioppo al suo massimo splendore. Un vino austero, profondo e territoriale che racconta la storia della Calabria enologica. Affinato 24 mesi in legno.',
                     tasting: 'Rubino con unghia granata. Bouquet complesso di rosa appassita, liquirizia, tabacco, spezie orientali e sottobosco. Palato caldo, sapido, con tannini fitti ma levigati e grande persistenza.',
                     pairing: 'Agnello alla brace, capretto al forno, carni rosse speziate, formaggi piccanti (Caciocavallo Silano).',
                     badges: [
-                        { text: '🍷 Rosso', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '🍇 5 Grappoli \'25', color: 'bg-blue-50 text-blue-600' }
+                        { text: '🍷 Rosso', color: 'bg-dark-surface/90 text-light' },
+                        { text: '🍇 5 Grappoli \'25', color: 'bg-blue-950/40 text-blue-400 border border-blue-900/50' }
                     ]
                 },
                 'altesino': {
                     producer: 'Altesino',
                     name: 'Brunello Montosoli 2020',
-                    region: 'Toscana',
+                    region: 'Montalcino, Toscana',
                     type: 'Rosso DOCG',
                     price: '€95',
+                    image: 'foto_vini/altesino_montosoli_2020.png',
                     description: 'Uno dei primi e più celebri "Cru" di Montalcino. Montosoli è una collina vocata che regala Brunelli di rara eleganza, complessità e potenziale di invecchiamento.',
                     tasting: 'Rubino intenso. Profumi seducenti di amarena, violetta, grafite, tabacco biondo e note balsamiche. Al gusto è opulento ma aristocratico, con tannini vellutati e una freschezza minerale che lo rende lunghissimo.',
                     pairing: 'Brasato al vino rosso, stufato di cinghiale, tagliata di manzo con tartufo o formaggi stagionati.',
                     badges: [
-                        { text: '🍷 Rosso', color: 'bg-dark-lighter/90 text-gray-800' },
-                        { text: '🏆 Tre Bicchieri \'26', color: 'bg-red-50 text-red-600' }
+                        { text: '🍷 Rosso', color: 'bg-dark-surface/90 text-light' },
+                        { text: '🏆 Tre Bicchieri \'26', color: 'bg-red-950/40 text-red-400 border border-red-900/50' }
                     ]
                 }
             };
@@ -5580,32 +5558,51 @@
                 document.getElementById('modalTasting').textContent = data.tasting;
                 document.getElementById('modalPairing').textContent = data.pairing;
 
+                // Populate Image
+                const modalImage = document.getElementById('modalImage');
+                if (modalImage && data.image) {
+                    modalImage.src = data.image;
+                    modalImage.alt = data.name;
+                }
+
                 // Populate Badges
                 const badgeContainer = document.getElementById('modalBadgeContainer');
-                badgeContainer.innerHTML = ''; // Clear previous
-                data.badges.forEach(badge => {
-                    const div = document.createElement('div');
-                    div.className = `px-3 py-1.5 rounded-xl text-xs font-bold shadow-sm border border-gold/20 ${badge.color}`;
-                    div.textContent = badge.text;
-                    badgeContainer.appendChild(div);
-                });
+                if (badgeContainer) {
+                    badgeContainer.innerHTML = ''; // Clear previous
+                    data.badges.forEach(badge => {
+                        const div = document.createElement('div');
+                        div.className = `px-3 py-1.5 rounded-xl text-xs font-bold shadow-sm border border-gold/20 ${badge.color}`;
+                        div.textContent = badge.text;
+                        badgeContainer.appendChild(div);
+                    });
+                }
 
                 // Show Modal
                 const modal = document.getElementById('wineModal');
-                modal.classList.remove('hidden');
-                // Small timeout for fade transition
-                setTimeout(() => {
-                    modal.classList.remove('opacity-0');
-                }, 10);
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    // Small timeout for fade transition
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                    }, 10);
+                }
                 document.body.style.overflow = 'hidden'; // Prevent scroll
+
+                // Focus close button for accessibility
+                const closeBtn = document.getElementById('modalCloseBtn');
+                if (closeBtn) {
+                    setTimeout(() => closeBtn.focus(), 100);
+                }
             }
 
             function closeWineModal() {
                 const modal = document.getElementById('wineModal');
-                modal.classList.add('opacity-0');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300); // Match transition duration
+                if (modal) {
+                    modal.classList.add('opacity-0');
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                    }, 300); // Match transition duration
+                }
                 document.body.style.overflow = '';
             }
 
@@ -5628,7 +5625,7 @@
         <!-- UI/UX 2026 Enhancements -->
         <script>
             // Navbar Shrink on Scroll
-       st nav = doctor('nav');
+            const nav = document.querySelector('nav');
             const backToTop = document.getElementById('backToTop');
 
             window.addEventListener('scroll', () => {
@@ -5875,274 +5872,30 @@
                     }
                 });
             });
+
+            // Close dropdowns when clicking a link inside them
+            document.querySelectorAll('.group a').forEach(link => {
+                link.addEventListener('click', () => {
+                    const dropdown = link.closest('.group').querySelector('.absolute');
+                    if (dropdown) {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                        setTimeout(() => {
+                            dropdown.style.opacity = '';
+                            dropdown.style.visibility = '';
+                        }, 500);
+                    }
+                });
+            });
         </script>
 
         <!-- Close Main Content Area -->
     </main>
 
-    <!-- ========== WINE MODAL ========== -->
-    <div id="wine-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true"
-        aria-labelledby="wine-modal-title">
-        <!-- Overlay -->
-        <div id="wine-modal-overlay"
-            class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"></div>
-
-        <!-- Modal Content -->
-        <div
-            class="absolute inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:max-w-2xl md:w-full bg-dark-lighter rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <!-- Header -->
-            <div class="relative bg-gradient-to-r from-primary to-primary/80 text-white p-6">
-                <button id="wine-modal-close"
-                    class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark-lighter/20 hover:bg-dark-lighter/30 flex items-center justify-center transition-colors"
-                    aria-label="Chiudi">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-                <span id="wine-modal-badge"
-                    class="inline-block px-3 py-1 bg-dark-lighter/20 rounded-full text-xs font-bold mb-3"></span>
-                <h2 id="wine-modal-title" class="font-serif text-2xl md:text-3xl font-bold"></h2>
-                <p id="wine-modal-producer" class="text-white/80 text-sm mt-1"></p>
-            </div>
-
-            <!-- Body -->
-            <div class="flex-1 overflow-y-auto p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Left: Image -->
-                    <div class="flex items-center justify-center bg-secondary rounded-2xl p-4">
-                        <img id="wine-modal-image" src="" alt="" class="max-h-64 object-contain">
-                    </div>
-
-                    <!-- Right: Details -->
-                    <div class="space-y-4">
-                        <div>
-                            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Descrizione</h3>
-                            <p id="wine-modal-description" class="text-gray-700 text-sm leading-relaxed"></p>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Vitigno</h3>
-                                <p id="wine-modal-grape" class="text-light font-medium"></p>
-                            </div>
-                            <div>
-                                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Regione</h3>
-                                <p id="wine-modal-region" class="text-light font-medium"></p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Abbinamenti</h3>
-                            <p id="wine-modal-pairing" class="text-gray-700 text-sm"></p>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-4 border-t border-gold/20">
-                            <div>
-                                <span class="text-xs text-gray-400">Prezzo indicativo</span>
-                                <p id="wine-modal-price" class="text-2xl font-bold text-primary"></p>
-                            </div>
-                            <div id="wine-modal-rating" class="text-yellow-400 text-lg"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== WINE MODAL SCRIPT ========== -->
-    <script>
-        // Wine Data Object
-        const wineData = {
-            'b             name: 'Sampagnino Bianco',
-                producer: 'Bulli • Emilia-Romagna',
-            badge: '🥂 Spumante',
-            image: 'foto_vini/sampagnino-bianco-bulli.png',
-            description: 'Un vino frizzante naturale, fresco e beverino. Perfetto come aperitivo o con piatti leggeri.',
-            grape: 'Trebbiano, Ortrugo',
-            region: 'Emilia-Romagna',
-            pairing: 'Aperitivo, salumi, gnocco fritto, tigelle',
-            price: '€12',
-            rating: '★★★★☆'
-        },
-        'mos': {
-            name: 'Para-Se 2024',
-                producer: 'Agricola Mos • Trentino',
-                    badge: '🍷 Rosso',
-                        image: 'foto_vini/schiava-para-se-agricola-mos-202420251015172138_d7723339-8a92-41d7-a684-62a7d12caa8b.png',
-                            description: 'Una Schiava di eccezionale freschezza, croccante e profumata. Il volto moderno del Trentino.',
-                                grape: 'Schiava',
-                                    region: 'Trentino-Alto Adige',
-                                        pairing: 'Speck, canederli, formaggi freschi, carni bianche',
-                                            price: '€22',
-                                                rating: '★★★★★'
-        },
-        'fontenille': {
-            name: 'Alphonse 2022',
-                producer: 'Domaine de Fontenille • Provenza',
-                    badge: '🥇 Selezione Internazionale',
-                        image: 'foto_vini/alphonse_2022.png',
-                            description: 'Un rosso provenzale di grande carattere, con note di mora e spezie dolci. Elegante e profondo.',
-                                grape: 'Grenache, Syrah',
-                                    region: 'Luberon, Provenza (Francia)',
-                                        pairing: 'Agnello, stufati provenzali, formaggi stagionati',
-                                            price: '€42',
-                                                rating: '★★★★★'
-        },
-        'valdicava': {
-            name: 'Madonna del Piano Riserva 2019',
-                producer: 'Valdicava • Toscana',
-                    badge: '💯 100/100 Ferraro',
-                        image: 'foto_vini/valdicava_madonna_del_piano.png',
-                            description: 'Brunello Riserva monumentale. Potenza, struttura e una capacità di invecchiamento infinita.',
-                                grape: 'Sangiovese Grosso',
-                                    region: 'Montalcino, Toscana',
-                                        pairing: 'Cinghiale, bistecca fiorentina, pecorino stagionato',
-                                            price: '€280',
-                                                rating: '★★★★★'
-        },
-        'altemasi': {
-            name: 'Altemasi Graal Riserva 2018',
-                producer: 'Cavit • Trentino',
-                    badge: '🍇 5 Grappoli Bibenda',
-                        image: 'foto_vini/altemasi_riserva_graal_2018.png',
-                            description: "L'eccellenza del Metodo Classico di montagna. Cremoso, minerale ed elegante.",
-                                grape: 'Chardonnay',
-                                    region: 'Trentino',
-                                        pairing: 'Pesce crudo, crostacei, risotti delicati',
-                                            price: '€45',
-                                                rating: '★★★★★'
-        },
-        'montevertine': {
-            name: 'Le Pergole Torte 2022',
-                producer: 'Montevertine • Toscana',
-                    badge: '🏆 Tre Bicchieri 2026',
-                        image: 'foto_vini/montevertine_2022.png',
-                            description: 'Il Sangiovese in purezza che sfida le convenzioni. Un\'icona di stile e tradizione toscana.',
-                                grape: 'Sangiovese',
-                                    region: 'Radda in Chianti, Toscana',
-                                        pairing: 'Pappardelle al cinghiale, arrosti, formaggi toscani',
-                                            price: '€90',
-                                                rating: '★★★★★'
-        },
-        'ippolito': {
-            name: 'Ripe del Falco Riserva 2017',
-                producer: 'Ippolito 1845 • Calabria',
-                    badge: '🍇 5 Grappoli 2025',
-                        image: 'foto_vini/ripe_del_falco_2017.png',
-                            description: "L'eccellenza del Sud. Un Gaglioppo Riserva di straordinaria complessità, premiato per la sua eleganza.",
-                                grape: 'Gaglioppo',
-                                    region: 'Cirò, Calabria',
-                                        pairing: "'Nduja, capretto, peperoncini ripieni, caciocavallo",
-                                            price: '€40',
-                                                rating: '★★★★★'
-        },
-        'altesino': {
-            name: 'Brunello Montosoli 2020',
-                producer: 'Altesino • Toscana',
-                    badge: '🏆 Tre Bicchieri 2026',
-                        image: 'foto_vini/altesino_montosoli_2020.png',
-                            description: 'Uno dei Cru più celebri di Montalcino. Un Brunello austero, profondo e di classe mondiale.',
-                                grape: 'Sangiovese Grosso',
-                                    region: 'Montalcino, Toscana',
-                                        pairing: 'Selvaggina, tartufo, brasati, pecorino di Pienza',
-                                            price: '€95',
-                                                rating: '★★★★★'
-        },
-        'giodo': {
-            name: 'Brunello di Montalcino 2020',
-                producer: 'Giodo • Toscana',
-                    badge: '🍷 Rosso dell\'Anno',
-                        image: 'foto_vini/giodo_brunello_2020.png',
-                            description: 'Eleganza e purezza. Un Brunello che cattura l\'essenza del territorio con straordinaria finezza.',
-                                grape: 'Sangiovese Grosso',
-                                    region: 'Montalcino, Toscana',
-                                        pairing: 'Bistecca, pici al ragù, pecorino',
-                                            price: '€85',
-                                                rating: '★★★★★'
-        },
-        'bosio': {
-            name: 'Franciacorta Brut Nature 2021',
-                producer: 'Bosio • Lombardia',
-                    badge: '🥂 Bollicine dell\'Anno',
-                        image: 'foto_vini/bosio_franciacorta_nature.png',
-                            description: 'Purezza assoluta senza dosaggio. Finezza e verticalità da vigneti d\'altura.',
-                                grape: 'Chardonnay, Pinot Nero',
-                                    region: 'Franciacorta, Lombardia',
-                                        pairing: 'Ostriche, sushi, tartare di pesce',
-                                            price: '€35',
-                                                rating: '★★★★★'
-        },
-        'baldovino': {
-            name: 'Cerasuolo d\'Abruzzo Baldovino 2024',
-                producer: 'Tenuta I Fauri • Abruzzo',
-                    badge: '🌹 Rosato dell\'Anno',
-                        image: 'foto_vini/baldovino_2024_tenuta_i_fauri.png',
-                            description: 'Il rosato italiano per eccellenza. Fresco, sapido e incredibilmente bevibile.',
-                                grape: 'Montepulciano',
-                                    region: 'Abruzzo',
-                                        pairing: 'Antipasti di mare, pizza, grigliate estive',
-                                            price: '€15',
-                                                rating: '★★★★★'
-        }
-        };
-
-        // Modal Elements
-        const wineModal = document.getElementById('wine-modal');
-        const wineModalOverlay = document.getElementById('wine-modal-overlay');
-        const wineModalClose = document.getElementById('wine-modal-close');
-
-        // Open Modal Function
-        function openWineModal(wineId) {
-            const wine = wineData[wineId];
-            if (!wine) {
-                console.warn('Wine not found:', wineId);
-                return;
-            }
-
-            // Populate modal
-            document.getElementById('wine-modal-title').textContent = wine.name;
-            document.getElementById('wine-modal-producer').textContent = wine.producer;
-            document.getElementById('wine-modal-badge').textContent = wine.badge;
-            document.getElementById('wine-modal-image').src = wine.image;
-            document.getElementById('wine-modal-image').alt = wine.name;
-            document.getElementById('wine-modal-description').textContent = wine.description;
-            document.getElementById('wine-modal-grape').textContent = wine.grape;
-            document.getElementById('wine-modal-region').textContent = wine.region;
-            document.getElementById('wine-modal-pairing').textContent = wine.pairing;
-            document.getElementById('wine-modal-price').textContent = wine.price;
-            document.getElementById('wine-modal-rating').textContent = wine.rating;
-
-            // Show modal
-            wineModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-
-            // Focus close button for accessibility
-            setTimeout(() => wineModalClose.focus(), 100);
-        }
-
-        // Close Modal Function
-        function closeWineModal() {
-            wineModal.classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        // Event Listeners
-        wineModalClose.addEventListener('click', closeWineModal);
-        wineModalOverlay.addEventListener('click', closeWineModal);
-
-        // Close on ESC
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && !wineModal.classList.contains('hidden')) {
-                closeWineModal();
-            }
-        });
-    </script>
-
     <!-- UX/UI Enhancement Scripts -->
     <script>
         // ==========================================
-        CROBAR
+        // SCROLL PROGRESS BAR
         // ==========================================
         const scrollProgress = document.getElementById('scroll-progress');
 
@@ -6275,15 +6028,12 @@
             btn.addEventListener('click', () => {
                 // Update active state
                 regionFilterBtns.forEach(b => {
-                    b.classList.remove('active', 'bg-primary', 'text-white', 'shadow-lg');
-                    // Reset to default style
-                    if (!b.classList.contains('bg-blue-50')) {
-                        b.classList.add('bg-dark-surface', 'text-gray-700');
-                    }
+                    b.classList.remove('active', 'bg-gold', 'text-secondary', 'shadow-gold', 'border-gold');
+                    b.classList.add('bg-dark-surface', 'text-gray-300', 'border-gold/20');
                 });
 
-                btn.classList.add('active', 'bg-primary', 'text-white', 'shadow-lg');
-                btn.classList.remove('bg-dark-surface', 'text-gray-700', 'bg-blue-50', 'text-blue-700');
+                btn.classList.add('active', 'bg-gold', 'text-secondary', 'shadow-gold', 'border-gold');
+                btn.classList.remove('bg-dark-surface', 'text-gray-300', 'border-gold/20');
 
                 const selectedRegion = btn.dataset.region.toLowerCase();
 
